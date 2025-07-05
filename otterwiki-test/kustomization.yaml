@@ -1,7 +1,7 @@
 helmCharts:
-  - name: app-template
+  - name: chart
     version: 1.0.0
-    repo: https://github.com/OreillePale
+    repo: https://github.com/OreillePale/herminius-nfs-single-image-helm-chart
     namespace: wiki2
     releaseName: wiki2
     valuesFile: values.yaml
