@@ -1,0 +1,7 @@
+helmCharts:
+  - name: app-template
+    version: 1.0.0
+    repo: https://github.com/OreillePale
+    namespace: wiki2
+    releaseName: wiki2
+    valuesFile: values.yaml
