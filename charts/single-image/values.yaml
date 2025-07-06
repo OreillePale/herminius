@@ -1,0 +1,10 @@
+namespace: wiki2
+name: wiki2
+image: redimp/otterwiki:2
+replicas: 1
+containerPort: 80
+nodePort: 80
+mountPath: /app-data
+path: /wiki2
+storage: 5Gi 
+uri: "otterwiki2.herminius.xyz"
