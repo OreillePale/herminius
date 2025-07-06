@@ -1,5 +1,6 @@
 helmCharts:
   - name: mychart
-    path: ../charts/single-image
+    repo: file://../charts/single-image
     version: 0.1.0
     valuesFile: values.yaml
+    releaseName: 1.0.0
