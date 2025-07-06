@@ -1,5 +1,5 @@
 helmCharts:
-  - name: mychart
+  - name: single-image
     repo: file://../charts/single-image
     version: 0.1.0
     valuesFile: values.yaml
