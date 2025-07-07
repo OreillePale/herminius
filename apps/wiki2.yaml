@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app1
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/OreillePale/herminius
+    targetRevision: HEAD
+    path: otterwiki2
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: wiki2
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
