@@ -3,7 +3,7 @@ kind: Kustomization
 
 helmCharts:
   - name: single-image
-    repo: file://../charts
+    repo: https://github.com/OreillePale/herminius/charts
     version: 0.1.0
     valuesFile: values.yaml
     releaseName: 1.0.0
