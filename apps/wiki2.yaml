@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/OreillePale/herminius
     targetRevision: HEAD
-    path: otterwiki2
+    path: otterwiki-test
   destination:
     server: https://kubernetes.default.svc
     namespace: wiki2
