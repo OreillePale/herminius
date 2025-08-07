@@ -18,12 +18,12 @@ spec:
         runAsUser: 0
       containers:
         - name: {{ .Values.Name }}-app-container
-          image: {{ .Values.image }}
+          image: {{ .Values.Image }}
           ports:
-            - containerPort: {{ .Values.containerPort }}
+            - containerPort: {{ .Values.ContainerPort }}
           volumeMounts:
             - name: {{ .Values.Name }}-volv
-              mountPath: {{ .Values.mountPath }}
+              mountPath: {{ .Values.MountPath }}
       volumes:
         - name: {{ .Values.Name }}-volv
           persistentVolumeClaim:

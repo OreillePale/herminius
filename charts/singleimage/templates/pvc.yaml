@@ -9,7 +9,7 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: {{ .Values.storage }}
+      storage: {{ .Values.Storage }}
   selector:
     matchLabels:
       directory: {{ .Values.Name }}

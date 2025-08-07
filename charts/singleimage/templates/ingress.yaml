@@ -19,8 +19,8 @@ spec:
               service:
                 name: {{ .Values.Name }}-service
                 port:
-                  number: {{ .Values.nodePort }}
+                  number: {{ .Values.NodePort }}
   tls:
     - hosts:
-        - {{ .Values.uri }}
+        - {{ .Values.Uri }}
 {{- end -}}

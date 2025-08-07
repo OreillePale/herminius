@@ -7,12 +7,12 @@ metadata:
     directory: {{ .Values.Name }}
 spec:
   capacity:
-    storage: {{ .Values.storage }}
+    storage: {{ .Values.Storage }}
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Delete
   storageClassName: slow
   nfs:
-    path: {{ .Values.path }}
+    path: {{ .Values.Path }}
     server: 10.43.0.4
