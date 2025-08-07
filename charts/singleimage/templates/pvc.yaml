@@ -4,7 +4,7 @@ metadata:
   name: {{ .Values.Name }}-nfs-claim
   namespace: {{ .Values.Namespace }}
 spec:
-  storageClassName: slow
+  storageClassName: nfs-csi
   accessModes:
   - ReadWriteOnce
   resources:
