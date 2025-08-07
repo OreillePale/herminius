@@ -12,7 +12,6 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Delete
-  storageClassName: nfs-csi
   nfs:
     path: {{ .Values.Path }}
     server: 10.43.0.4
