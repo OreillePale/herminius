@@ -5,10 +5,7 @@ metadata:
   namespace: {{ .Values.Namespace }}
 spec:
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
       storage: {{ .Values.Storage }}
-  selector:
-    matchLabels:
-      directory: {{ .Values.Name }}
