@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/OreillePale/herminius
     targetRevision: HEAD
-    path: otterwiki-test
+    path: charts/singleimage
   destination:
     server: https://kubernetes.default.svc
     namespace: wiki2
@@ -16,3 +16,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
