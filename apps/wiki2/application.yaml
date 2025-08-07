@@ -10,7 +10,8 @@ spec:
     targetRevision: HEAD
     path: charts/singleimage
     helm:
-      - ../../apps/wiki2/values.yaml
+      valueFiles:
+        - ../../apps/wiki2/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: wiki2
