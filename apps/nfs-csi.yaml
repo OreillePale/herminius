@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://kubernetes-csi.github.io/csi-driver-nfs
-    chart: nfs-csi-driver
-    targetRevision: 4.6.0  # or latest
+    repoURL: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
+    chart: csi-driver-nfs
+    targetRevision: 4.11.0  # or latest
     helm:
       values: |
         controller:
