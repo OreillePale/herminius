@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/OreillePale/herminius
     targetRevision: HEAD
-    path: apps        # points to the folder with child app manifests
+    path: apps
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd

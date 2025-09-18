@@ -1,0 +1,10 @@
+Namespace: mintbuilder
+Name: webapp
+Image: risbobo/mintbuilder-web
+Replicas: 1
+ContainerPort: 80
+NodePort: 80
+MountPath: /app-data
+Path: /mintbuilder-webapp
+Storage: 100Mi
+Uri: "mintbuilder.supermint.love"
