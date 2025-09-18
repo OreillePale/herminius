@@ -1,6 +1,6 @@
 Namespace: mintbuilder
 Name: webapp
-Image: risbobo/mintbuilder-web
+Image: risbobo/mintbuilder-web:0.0.1
 Replicas: 1
 ContainerPort: 80
 NodePort: 80

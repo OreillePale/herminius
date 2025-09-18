@@ -1,6 +1,6 @@
 Namespace: mintbuilder
 Name: bot
-Image: risbobo/mintbuilder-bot:bot0.0.1
+Image: risbobo/mintbuilder-bot:0.0.1
 Replicas: 1
 ContainerPort: 80
 NodePort: 80
