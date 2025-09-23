@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: wiki2
+  name: adventea
   namespace: argocd
 spec:
   project: default
@@ -14,7 +14,7 @@ spec:
         - ../../apps/adventea/values.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: wiki2
+    namespace: adventea
   syncPolicy:
     automated:
       prune: true
