@@ -11,4 +11,4 @@ spec:
   resources:
     requests:
       storage: {{ .Values.Storage }}
-{{- if .Values.Storage -}}
+{{- end -}}
