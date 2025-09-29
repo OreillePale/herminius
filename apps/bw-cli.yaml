@@ -1,20 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: wiki2
+  name: bitwarden-cli
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/OreillePale/herminius
     targetRevision: HEAD
-    path: charts/singleimage
-    helm:
-      valueFiles:
-        - ../../apps/wiki2/values.yaml
+    path: apps/bw-cli
   destination:
     server: https://kubernetes.default.svc
-    namespace: wiki2
+    namespace: bitwarden
   syncPolicy:
     automated:
       prune: true
