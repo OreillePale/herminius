@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: bitwarden-cli
-          image: oreillepale/bitwarden-cli-arm:latest
+          image: oreillepale/bitwarden-cli-arm:newest-build
           imagePullPolicy: IfNotPresent
           env:
             - name: BW_HOST
