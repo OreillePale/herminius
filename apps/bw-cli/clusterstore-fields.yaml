@@ -5,6 +5,6 @@ metadata:
 spec:
   provider:
     webhook:
-      url: "http://bitwarden-cli:8087/object/item/{{ .remoteRef.key }}"
+      url: "http://bitwarden-cli.bitwarden.svc.cluster.local:8087/object/item/{{ .remoteRef.key }}"
       result:
         jsonPath: "$.data.fields[?@.name==\"{{ .remoteRef.property }}\"].value"
