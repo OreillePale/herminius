@@ -23,7 +23,7 @@ spec:
       containers:
         - name: bitwarden-cli
           image: oreillepale/bitwarden-cli-arm:newest-build
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           env:
             - name: BW_HOST
               valueFrom:
