@@ -13,9 +13,3 @@ certController:
   serviceMonitor:
     enabled: true
     interval: 1m
-
-service:
-  ipFamilyPolicy: "RequireDualStack"
-  ipFamilies:
-    - IPv4
-    - IPv6
