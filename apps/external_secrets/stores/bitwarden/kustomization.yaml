@@ -2,3 +2,4 @@ resources:
   - clustersecretstore.yaml
   - test-secret.yaml
   - deployment.yaml
+  - service.yaml
