@@ -1,5 +1,5 @@
 resources:
   - clustersecretstore.yaml
-  - test-secret.yaml
+  - network-policy.yaml
   - deployment.yaml
   - service.yaml
