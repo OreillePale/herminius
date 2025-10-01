@@ -1,15 +1,14 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: external-secrets-to-bw-cli
+  name: allow-eso-to-bw-cli
   namespace: external-secrets
 spec:
-  endpointSelector:
+  podSelector:
     matchLabels:
-      app.kubernetes.io/instance: bitwarden-cli
       app.kubernetes.io/name: bitwarden-cli
   ingress:
-    - fromEndpoints:
-        - matchLabels:
-            app.kubernetes.io/instance: external-secrets
-            app.kubernetes.io/name: external-secrets
+  - from:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: external-secrets
