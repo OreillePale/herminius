@@ -4,11 +4,12 @@ metadata:
   name: allow-eso-to-bitwarden-cli
   namespace: bitwarden
 spec:
-  podSelector:
+  endpointSelector:
     matchLabels:
-      kubernetes.io/metadata.name: bitwarden
+      app.kubernetes.io/instance: bitwarden-cli
+      app.kubernetes.io/name: bitwarden-cli
   ingress:
-  - from:
-    - namespaceSelector:
-        matchLabels:
-          kubernetes.io/metadata.name: external-secrets
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/instance: external-secrets
+            app.kubernetes.io/name: external-secrets
