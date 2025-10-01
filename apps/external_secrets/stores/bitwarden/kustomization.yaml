@@ -1,10 +1,4 @@
 resources:
   - clustersecretstore.yaml
   - test-secret.yaml
-helmCharts:
-  - name: app-template
-    version: 4.3.0
-    repo: https://bjw-s-labs.github.io/helm-charts
-    namespace: external-secrets
-    releaseName: bitwarden-cli
-    valuesFile: values.yaml
+  - deployment.yaml
