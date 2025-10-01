@@ -7,7 +7,6 @@ spec:
   podSelector:
     matchLabels:
       app.kubernetes.io/name: bitwarden-cli
-      app.kubernetes.io/name: bitwarden-notes
   ingress:
   - from:
     - namespaceSelector:
