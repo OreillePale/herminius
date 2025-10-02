@@ -4,6 +4,6 @@ Image: oreillepale/adventea:latest
 Replicas: 1
 Storage: 10Mi
 esoSecret:
-  secretName: 693f3ce4-0a1a-421a-b5bc-5a3d27fe6806
+  secretName: adventea
   storeName: bitwarden-fields
-  secretKey: TELEGRAM
+  secretKey: 693f3ce4-0a1a-421a-b5bc-5a3d27fe6806
