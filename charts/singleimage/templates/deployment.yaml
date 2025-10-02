@@ -21,6 +21,10 @@ spec:
           image: {{ .Values.Image }}
           ports:
             - containerPort: {{ .Values.ContainerPort }}
+          env:
+{{- with .Values.env }}
+{{ toYaml . | indent 12 }}
+{{- end }}
           volumeMounts:
             - name: {{ .Values.Name }}-volv
               mountPath: {{ .Values.MountPath }}
@@ -28,3 +32,8 @@ spec:
         - name: {{ .Values.Name }}-volv
           persistentVolumeClaim:
             claimName: {{ .Values.Name }}-nfs-claim
+{{- if and .Values.esoSecret.secretName .Values.esoSecret.storeName }}
+envFrom:
+  - secretRef:
+      name: {{ .Values.esoSecret.secretName }}
+{{- end }}
