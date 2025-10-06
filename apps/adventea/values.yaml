@@ -9,3 +9,4 @@ esoSecret:
   storeName: bitwarden-fields
   kind: ClusterSecretStore
   extractKey: e990f073-345a-46c9-96aa-da48f18c60b6
+  data: API_TOKEN
