@@ -6,6 +6,6 @@ Storage: 10Mi
 esoSecret:
   enabled: true
   secretName: adventea-secrets
-  storeName: bitwarden-login
+  storeName: bitwarden-notes
   kind: ClusterSecretStore
-  extractKey: 693f3ce4-0a1a-421a-b5bc-5a3d27fe6806
+  extractKey: eae058b7-82c9-45e8-aeb0-dbbce6204493
