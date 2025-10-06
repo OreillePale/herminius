@@ -8,4 +8,4 @@ esoSecret:
   secretName: adventea-secrets
   storeName: bitwarden-notes
   kind: ClusterSecretStore
-  extractKey: eae058b7-82c9-45e8-aeb0-dbbce6204493
+  extractKey: e990f073-345a-46c9-96aa-da48f18c60b6
