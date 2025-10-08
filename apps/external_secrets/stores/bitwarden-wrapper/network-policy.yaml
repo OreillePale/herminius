@@ -6,7 +6,7 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      app.kubernetes.io/name: bitwarden-cli
+      app.kubernetes.io/name: bitwarden-cli-wrapped
   ingress:
   - from:
     - podSelector:
