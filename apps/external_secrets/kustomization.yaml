@@ -8,3 +8,8 @@ helmCharts:
     namespace: external-secrets
     releaseName: external-secrets
     valuesFile: values.yaml
+    set:
+      - name: installCRDs
+        value: "true"    
+    
+
