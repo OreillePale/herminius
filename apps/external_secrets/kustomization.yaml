@@ -7,9 +7,6 @@ helmCharts:
     repo: https://charts.external-secrets.io
     namespace: external-secrets
     releaseName: external-secrets
-    valuesFile: values.yaml
-    set:
-      - name: installCRDs
-        value: "true"    
+    valuesFile: values.yaml   
     
 
