@@ -8,4 +8,4 @@ esoSecret:
   secretName: adventea-secrets
   storeName: bitwarden-fields-wrapped
   kind: ClusterSecretStore
-  extractKey: d3fc9fbf-8e4f-4f7c-8176-a141a78b2f1b
+  extractKey: d3fc9fbf-8e4f-4f7c-8176-a141a78b2f1b----
