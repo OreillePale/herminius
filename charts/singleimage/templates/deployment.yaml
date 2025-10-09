@@ -24,11 +24,11 @@ spec:
           volumeMounts:
             - name: {{ .Values.Name }}-volv
               mountPath: {{ .Values.MountPath }}
-{{- if .Values.BwSecret -}}
+          {{- if .Values.BwSecret}}
           envFrom:
             - secretRef:
                 name: {{ .Values.Name }}-bwsecret
-{{- end -}}
+          {{- end }}
       volumes:
         - name: {{ .Values.Name }}-volv
           persistentVolumeClaim:
