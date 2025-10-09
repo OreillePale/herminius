@@ -3,9 +3,4 @@ Name: adventea
 Image: oreillepale/adventea:latest
 Replicas: 1
 Storage: 10Mi
-esoSecret:
-  enabled: true
-  secretName: adventea-secrets
-  storeName: bitwarden-fields-wrapped
-  kind: ClusterSecretStore
-  extractKey: d3fc9fbf-8e4f-4f7c-8176-a141a78b2f1b
+BwSecret: d3fc9fbf-8e4f-4f7c-8176-a141a78b2f1b
