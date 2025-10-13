@@ -1,1 +1,1 @@
-# argocd repo for herminius
+# argocd repo for herminius.xyz cluster

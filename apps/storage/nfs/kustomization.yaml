@@ -1,0 +1,4 @@
+resources:
+  - server.yaml
+  - storageclass.yaml
+  - csi.yaml

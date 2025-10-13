@@ -1,0 +1,19 @@
+project: default
+source:
+  repoURL: >-
+    https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
+  targetRevision: 4.11.0
+  helm:
+    values: |
+      controller:
+        runOnControlPlane: true
+  chart: csi-driver-nfs
+destination:
+  server: https://kubernetes.default.svc
+  namespace: nfs-csi
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - CreateNamespace=true
