@@ -1,5 +1,5 @@
 namespace: storage
 resources:
-  - nfs
+  - nfs/
     
 
