@@ -4,7 +4,9 @@ Image: redimp/otterwiki:2
 Replicas: 1
 ContainerPort: 80
 NodePort: 80
+Storage:
 MountPath: /app-data
 Path: /wiki2
+StorageClass: nfs-csi-v2
 Storage: 5Gi 
 Uri: "otterwiki2.herminius.xyz"
