@@ -16,7 +16,7 @@ spec:
           path: /
   destination:
     server: https://kubernetes.default.svc
-    namespace: nfs-provisioner
+    namespace: storage
   syncPolicy:
     automated:
       prune: true
