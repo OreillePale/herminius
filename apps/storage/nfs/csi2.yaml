@@ -14,14 +14,6 @@ spec:
         nfs:
           server: 10.43.0.4
           path: /
-        storageClass:
-          create: true
-          name: nfs-csi-v3
-          defaultClass: true
-          reclaimPolicy: Retain
-          volumeBindingMode: Immediate
-          allowVolumeExpansion: true
-          pathPattern: "${.PVC.namespace}/${.PVC.name}"
   destination:
     server: https://kubernetes.default.svc
     namespace: nfs-provisioner
