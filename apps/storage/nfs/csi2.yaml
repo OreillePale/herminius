@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/charts
+    repoURL: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/chartswwwwwww
     chart: nfs-subdir-external-provisioner
     targetRevision: 4.0.2
     helm:
