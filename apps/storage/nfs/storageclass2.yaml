@@ -2,7 +2,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: nfs-csi-v3
-provisioner: storage.nfs-subdir-external-provisioner   
+provisioner: nfs-subdir-external-provisioner   
 parameters:
   server: 10.43.0.4
   share: /                                       
