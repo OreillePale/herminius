@@ -10,7 +10,6 @@ spec:
     chart: nfs-subdir-external-provisioner
     targetRevision: 4.0.2
     helm:
-      failOnResourceError: true
       values: |
         nfs:
           server: 10.43.0.4
