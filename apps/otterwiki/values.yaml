@@ -8,4 +8,4 @@ MountPath: /app-data
 Path: /otterwiki
 Storage: 5Gi 
 Uri: "otterwiki.herminius.xyz"
-StorageClass: nfs-csi-v5
+StorageClass: nfs-csi-v6
