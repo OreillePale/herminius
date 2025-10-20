@@ -1,0 +1,12 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nfs-csi-v4
+provisioner: nfs-subdir-external-provisioner   
+parameters:
+  server: 10.43.0.4
+  share: /                                       
+  pathPattern: "${.PVC.namespace}/${.PVC.name}"  
+reclaimPolicy: Retain
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
