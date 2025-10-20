@@ -1,7 +1,5 @@
 resources:
   - storageclass.yaml
-  - storageclass2.yaml
-  - storageclass4.yaml
   - storageclass5.yaml
   - csi.yaml
   - csi2.yaml
