@@ -23,15 +23,19 @@ spec:
           ports:
             - containerPort: {{ .Values.ContainerPort }}
           {{- end }}
+          {{- if .Values.Storage }}
           volumeMounts:
             - name: {{ .Values.Name }}-volv
               mountPath: {{ .Values.MountPath }}
+          {{- end }}
           {{- if .Values.BwSecret}}
           envFrom:
             - secretRef:
                 name: {{ .Values.Name }}-bwsecret
           {{- end }}
+      {{- if .Values.ContainerPort }}
       volumes:
         - name: {{ .Values.Name }}-volv
           persistentVolumeClaim:
             claimName: {{ .Values.Name }}-nfs-claim
+      {{- end }}
