@@ -19,8 +19,10 @@ spec:
       containers:
         - name: {{ .Values.Name }}-app-container
           image: {{ .Values.Image }}
+          {{- if .Values.ContainerPort }}
           ports:
             - containerPort: {{ .Values.ContainerPort }}
+          {{- end }}
           volumeMounts:
             - name: {{ .Values.Name }}-volv
               mountPath: {{ .Values.MountPath }}
