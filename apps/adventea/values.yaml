@@ -2,5 +2,4 @@ Namespace: adventea
 Name: adventea
 Image: oreillepale/adventea:latest
 Replicas: 1
-Storage: 10Mi
 BwSecret: 469f5219-d33a-49a0-a292-eb9c8fcf6472
