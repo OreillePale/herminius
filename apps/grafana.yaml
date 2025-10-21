@@ -13,7 +13,7 @@ spec:
       values: |
         Namespace: grafana
         Name: grafana
-        Image: redimp/otterwiki:2
+        Image: grafana/grafana-oss
         Replicas: 1
         ContainerPort: 3000
         NodePort: 33000
