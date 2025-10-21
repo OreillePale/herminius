@@ -7,7 +7,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: {{ .Values.StorageClass | default "nfs-csi" }}
+  storageClassName: {{ .Values.StorageClass | default "nfs-csi-v6" }}
   resources:
     requests:
       storage: {{ .Values.Storage }}
