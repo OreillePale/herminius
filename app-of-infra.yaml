@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/OreillePale/herminius
     targetRevision: HEAD
-    path: apps
+    path: infra
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
