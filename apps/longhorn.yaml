@@ -16,6 +16,10 @@ spec:
         values: |
           preUpgradeChecker:
             jobEnabled: false
+          service:
+            ui:
+              type: NodePort
+              nodePort: 30500
   destination:
     server: https://kubernetes.default.svc
     namespace: longhorn-system
