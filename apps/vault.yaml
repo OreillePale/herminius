@@ -50,8 +50,7 @@ spec:
         ui:
           enabled: true
           serviceType: NodePort  # Changed to NodePort
-          # Optional: specify a specific NodePort (must be in range 30000-32767)
-          # serviceNodePort: 30200
+          serviceNodePort: 30200
         
         injector:
           enabled: true
