@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: bitwarden-cli-wrapped
-  namespace: bitwarden
+  namespace: external-secrets
   labels:
     app.kubernetes.io/instance: bitwarden-cli-wrapped
     app.kubernetes.io/name: bitwarden-cli-wrapped
