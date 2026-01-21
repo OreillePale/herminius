@@ -1,5 +1,5 @@
-resources:
-  - stores
+#resources:
+#  - stores
 helmCharts:
   - name: external-secrets
     version: 1.2.1
