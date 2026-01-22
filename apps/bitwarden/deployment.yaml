@@ -40,6 +40,16 @@ spec:
                 secretKeyRef:
                   name: bitwarden-cli
                   key: BW_PASSWORD
+            - name: BW_CLIENTID
+              valueFrom:
+                secretKeyRef:
+                  name: bitwarden-cli
+                  key: BW_CID
+            - name: BW_CLIENTSECRET
+              valueFrom:
+                secretKeyRef:
+                  name: bitwarden-cli
+                  key: BW_SECRET
           ports:
             - name: http
               containerPort: 8088
