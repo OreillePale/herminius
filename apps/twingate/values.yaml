@@ -1,0 +1,10 @@
+replicaCount: 2
+
+image:
+  repository: twingate/connector
+  tag: "1.84.0"
+  pullPolicy: IfNotPresent
+
+envFrom:
+  - secretRef:
+      name: twingate-connector
