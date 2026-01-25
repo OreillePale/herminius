@@ -9,9 +9,9 @@ spec:
   source:
     repoURL: https://charts.bitwarden.com
     chart: bitwarden-secrets-operator
-    targetRevision: 0.4.2
+    targetRevision: 1.1.0
     helm:
-      releaseName: bitwarden-secrets-operator
+      releaseName: sm-operator
       values: |
         installCRDs: true
 
