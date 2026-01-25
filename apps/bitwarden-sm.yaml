@@ -8,7 +8,7 @@ spec:
 
   source:
     repoURL: https://charts.bitwarden.com
-    chart: bitwarden-secrets-operator
+    chart: sm-operator
     targetRevision: 1.1.0
     helm:
       releaseName: sm-operator
