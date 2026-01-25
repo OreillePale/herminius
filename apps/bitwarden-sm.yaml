@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bitwarden-secrets-operator
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://charts.bitwarden.com
+    chart: bitwarden-secrets-operator
+    targetRevision: 1.2.0 # pin this, don't use latest
+    helm:
+      releaseName: bitwarden-secrets-operator
+      values: |
+        installCRDs: true
+
+        operator:
+          logLevel: info
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: bitwarden-sm
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
