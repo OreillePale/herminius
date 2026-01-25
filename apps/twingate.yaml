@@ -13,7 +13,7 @@ spec:
     server: https://kubernetes.default.svc
     namespace: twingate
   helm:
-    valueFile:
+    valueFiles:
       - values.yaml
   syncPolicy:
     automated:
