@@ -1,5 +1,8 @@
 connector:
   enabled: true  
+  network: "<network_slug>"
+  accessToken: "<token>"
+  refreshToken: "<token>"
 
 replicaCount: 2
 
