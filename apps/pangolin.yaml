@@ -11,7 +11,7 @@ spec:
     targetRevision: main
     path: apps/pangolin
     kustomize:
-      buildOptions: "--enable-helm"
+      buildOptions: --enable-helm
 
   destination:
     server: https://kubernetes.default.svc
