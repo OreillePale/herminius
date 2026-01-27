@@ -1,9 +1,3 @@
-image:
-  repository: https://charts.fossorial.io
-  chart: newt
-  targetRevision: 1.1.0
-  pullPolicy: IfNotPresent
-
 newtInstances:
   - name: main
     enabled: true
