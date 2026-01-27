@@ -10,9 +10,6 @@ spec:
     repoURL: https://github.com/OreillePale/herminius
     targetRevision: main
     path: apps/pangolin
-    helm:
-      valueFiles:
-        - values.yaml
 
   destination:
     server: https://kubernetes.default.svc
