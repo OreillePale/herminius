@@ -1,0 +1,15 @@
+image:
+  repository: https://charts.fossorial.io
+  chart: newt
+  targetRevision: 1.1.0
+  pullPolicy: IfNotPresent
+
+newtInstances:
+  - name: main
+    enabled: true
+    auth:
+      existingSecretName: newt-cred
+      keys:
+        endpointKey: PANGOLIN_ENDPOINT
+        idKey: NEWT_ID
+        secretKey: NEWT_SECRET
