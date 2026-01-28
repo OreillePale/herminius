@@ -14,7 +14,6 @@ helmCharts:
   - name: postgres-operator
     repo: https://opensource.zalando.com/postgres-operator/charts/postgres-operator/
     version: 1.15.1   
-    installCRDs: true
     releaseName: postgres-operator
     valuesInline:
       replicaCount: 1
