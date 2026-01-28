@@ -4,12 +4,6 @@ kind: Kustomization
 namespace: postgres-operator
 
 helmCharts:
-# CRDs
-  - name: postgres-operator-crds
-    repo: https://opensource.zalando.com/postgres-operator/charts/postgres-operator-crds/
-    version: 1.15.1
-    releaseName: postgres-operator-crds
-    
   # Postgres Operator
   - name: postgres-operator
     repo: https://opensource.zalando.com/postgres-operator/charts/postgres-operator/
