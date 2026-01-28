@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: postgres-operator
 
 resources:
-  - https://github.com/zalando/postgres-operator/master/manifests/postgres-operator-crds.yaml
+  - https://github.com/zalando/postgres-operator/manifests/postgres-operator-crds.yaml
 
 helmCharts:
   # Postgres Operator
