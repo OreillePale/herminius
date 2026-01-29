@@ -1,25 +1,56 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: postgres
+  name: postgres-operator
   namespace: argocd
 spec:
   project: default
-
+  
   source:
-    repoURL: https://github.com/OreillePale/herminius
-    targetRevision: main
-    path: apps/postgres
-
+    chart: postgres-operator
+    repoURL: https://opensource.zalando.com/postgres-operator/charts/postgres-operator/
+    targetRevision: 1.15.1
+    helm:
+      values: |
+        replicaCount: 1
+        configGeneral:
+          enable_crd_registration: true  # Let the operator handle CRDs
+  
   destination:
     server: https://kubernetes.default.svc
-    namespace: postgres
-
+    namespace: postgres-operator
+  
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-      - ServerSideApply=true
-      - Replace=true 
+      - Replace=true  # Important for CRD management
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: postgres-operator-ui
+  namespace: argocd
+spec:
+  project: default
+  
+  source:
+    chart: postgres-operator-ui
+    repoURL: https://opensource.zalando.com/postgres-operator/charts/postgres-operator-ui/
+    targetRevision: 1.15.1
+    helm:
+      values: |
+        replicaCount: 1
+  
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: postgres-operator
+  
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
