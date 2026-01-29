@@ -3,8 +3,8 @@ kind: Kustomization
 
 namespace: postgres-operator
 
-resources:
-  - https://github.com/zalando/postgres-operator/manifests/postgres-operator-crds.yaml
+#resources:
+#  - https://github.com/zalando/postgres-operator/manifests/postgres-operator-crds.yaml
 
 helmCharts:
   # Postgres Operator
