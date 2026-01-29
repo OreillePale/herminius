@@ -19,6 +19,12 @@ spec:
           accessMode: ReadWriteOnce
           size: 5Gi
           storageClass: longhorn
+        configuration:
+          http:
+            use_x_forwarded_for: true
+            trusted_proxies:
+              - 10.42.0.0/16
+
 
   destination:
     server: https://kubernetes.default.svc
