@@ -11,6 +11,32 @@ spec:
     targetRevision: 55.5.0
     helm:
       releaseName: prometheus
+      values: |
+        prometheus:
+          prometheusSpec:
+            retention: 2d
+            retentionSize: 1GB
+            scrapeInterval: 60s
+            resources:
+              requests:
+                memory: 150Mi
+              limits:
+                memory: 400Mi
+        
+        defaultRules:
+          create: false  # No alerting rules at all
+        
+        alertmanager:
+          enabled: false
+        
+        # Keep only these
+        nodeExporter:
+          enabled: true
+        kubeStateMetrics:
+          enabled: true
+        grafana:
+          enabled: true
+  
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
