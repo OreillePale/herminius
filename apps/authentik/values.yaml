@@ -9,3 +9,7 @@ postgresql:
 
 redis:
   enabled: true
+
+envFrom:
+  - secretRef:
+      name: authentik-db-cred
