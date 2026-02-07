@@ -3,13 +3,21 @@ authentik:
     host: "cluster0-rw.nativecloudpg.svc.cluster.local" 
     name: "authentik"
     port: 5432
+    user: "authentik"
+    password:
+      valueFrom:
+        secretKeyRef:
+          name: authentik-db-cred
+          key: AUTHENTIK_POSTGRESQL__PASSWORD
+
+  secret_key:
+    valueFrom:
+      secretKeyRef:
+        name: authentik-db-cred
+        key: AUTHENTIK_SECRET_KEY
 
 postgresql:
   enabled: false
 
 redis:
   enabled: true
-
-envFrom:
-  - secretRef:
-      name: authentik-db-cred
