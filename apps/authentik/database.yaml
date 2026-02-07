@@ -1,9 +1,17 @@
 apiVersion: postgresql.cnpg.io/v1
-kind: Database
+kind: SQLJob
 metadata:
-  name: database
+  name: create-user-and-db
+  namespace: authentik
 spec:
-  name: authentik
-  owner: authentik
-  cluster:
-    name: cluster0
+  cluster: cluster0
+  env:
+    - name: USER_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: authentik-db-cred
+          key: AUTHENTIK_POSTGRESQL__PASSWORD
+  sql: |
+    CREATE ROLE authentik WITH LOGIN PASSWORD :'USER_PASSWORD';
+    CREATE DATABASE authentik OWNER authentik;
+
