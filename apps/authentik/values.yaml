@@ -1,0 +1,11 @@
+authentik:
+  postgresql:
+    host: "cluster0-rw.nativecloudpg.svc.cluster.local" 
+    name: "authentik"
+    port: 5432
+
+postgresql:
+  enabled: false
+
+redis:
+  enabled: true
