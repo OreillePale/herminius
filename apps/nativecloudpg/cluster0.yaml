@@ -3,8 +3,8 @@ kind: Cluster
 metadata:
   name: cluster0
 spec:
-  instances: 1
+  instances: 3
 
   storage:
     size: 50Gi
-    storageClass: longhorn # natively keep three copies
+    storageClass: longhorn-single # data relication handled by 
