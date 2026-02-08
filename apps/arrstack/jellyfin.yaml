@@ -4,12 +4,13 @@ metadata:
   name: smb-media-pv
 spec:
   capacity:
-    storage: 100Gi   # just a placeholder, SMB volume is effectively unlimited
+    storage: 100Gi   # placeholder
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   csi:
     driver: smb.csi.k8s.io
+    volumeHandle: smb-media-pv          # <-- REQUIRED!
     readOnly: false
     volumeAttributes:
       source: "//192.168.1.23/shared"
