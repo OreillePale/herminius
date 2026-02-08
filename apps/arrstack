@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: arrstack
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/OreillePale/herminius
+    targetRevision: main
+    path: apps/arrstack
+    kustomize:
+      buildOptions: --enable-helm
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: arrstack
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
