@@ -1,3 +1,34 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: smb-media-pv
+  namespace: arrstack
+spec:
+  capacity:
+    storage: 100Gi   # just a placeholder, SMB volume is effectively unlimited
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  csi:
+    driver: smb.csi.k8s.io
+    readOnly: false
+    volumeAttributes:
+      source: "//192.168.1.23/shared"
+      mountOptions: "vers=3.0,guest"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: smb-media-pvc
+  namespace: arrstack
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+  volumeName: smb-media-pv
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -20,24 +51,18 @@ spec:
             enabled: true
             size: 10Gi
             storageClass: longhorn-double
+          # Mount the SMB media PVC like other volumes
+          media:
+            enabled: true
+            existingClaim: smb-media-pvc
         env:
           - name: PUID
             value: "1000"
           - name: PGID
             value: "1000"
-        extraVolumes:
-          - name: smb-media
-            csi:
-              driver: smb.csi.k8s.io
-              readOnly: false
-              volumeAttributes:
-                source: "//192.168.1.23/shared/data/media"
-                mountOptions: "vers=3.0,guest"
-        extraVolumeMounts:
-          - name: smb-media
-            mountPath: /media
         service:
-          type: ClusterIP
+          type: NodePort
+          nodePort: 32000
   destination:
     server: https://kubernetes.default.svc
     namespace: arrstack
