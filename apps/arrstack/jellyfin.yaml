@@ -8,6 +8,7 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
   csi:
     driver: smb.csi.k8s.io
     volumeHandle: smb-media-pv          # <-- REQUIRED!
@@ -28,6 +29,7 @@ spec:
     requests:
       storage: 100Gi
   volumeName: smb-media-pv
+  storageClassName: ""
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
