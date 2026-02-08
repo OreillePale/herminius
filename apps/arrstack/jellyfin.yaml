@@ -32,7 +32,7 @@ spec:
               readOnly: false
               volumeAttributes:
                 source: "//192.168.1.23/shared/data/media"
-                mountOptions: "vers=3.0"
+                mountOptions: "vers=3.0,guest"
         extraVolumeMounts:
           - name: smb-media
             mountPath: /media
