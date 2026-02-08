@@ -4,8 +4,20 @@ authentik:
     name: "authentik"
     port: 5432
     user: "authentik"
-  
-  existingSecret: "authentik-db-cred"
+
+# Global environment variables for all authentik components
+global:
+  env:
+    - name: AUTHENTIK_SECRET_KEY
+      valueFrom:
+        secretKeyRef:
+          name: authentik-db-cred
+          key: AUTHENTIK_SECRET_KEY
+    - name: AUTHENTIK_POSTGRESQL__PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: authentik-db-cred
+          key: AUTHENTIK_POSTGRESQL__PASSWORD
 
 postgresql:
   enabled: false
