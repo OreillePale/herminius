@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/linuxserver/charts
-    targetRevision: master
-    path: charts/jellyfin
+    repoURL: https://jellyfin.github.io/jellyfin-helm
+    targetRevision: 2.7.0
+    path: jellyfin
     helm:
       values: |
         persistence:
