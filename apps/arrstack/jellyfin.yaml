@@ -4,18 +4,21 @@ metadata:
   name: smb-media-pv
 spec:
   capacity:
-    storage: 100Gi   # placeholder
+    storage: 100Gi
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   storageClassName: ""
   csi:
     driver: smb.csi.k8s.io
-    volumeHandle: smb-media-pv          # <-- REQUIRED!
+    volumeHandle: smb-media-pv
     readOnly: false
     volumeAttributes:
       source: "//192.168.1.23/shared"
-      mountOptions: "vers=3.0,guest,username="
+  mountOptions:
+    - vers=3.0
+    - guest
+    - noperm
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
