@@ -14,7 +14,7 @@ spec:
         persistence:
           config:
             enabled: true
-            size: 1Gi
+            size: 10Gi
             storageClass: longhorn-double
           data:
             enabled: true
