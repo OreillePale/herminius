@@ -4,3 +4,4 @@ resources:
   - sonarr.yaml
   - prowlarr.yaml
   - qbittorrent.yaml
+  - bazarr.yaml
