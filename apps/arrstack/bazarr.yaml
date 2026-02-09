@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bazarr
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://k8s-home-lab.github.io/helm-charts/
+    chart: bazarr
+    targetRevision: "11.2.0"
+    helm:
+      values: |
+        podSecurityContext:
+          fsGroup: 1000
+          fsGroupChangePolicy: "OnRootMismatch"
+        persistence:
+          config:
+            enabled: true
+            size: 2Gi
+            storageClass: longhorn-double
+            # Mount the SMB media PVC like other volumes
+          media:
+            enabled: true
+            existingClaim: smb-media-pvc
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: arrstack
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
