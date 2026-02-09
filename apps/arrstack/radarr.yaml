@@ -11,6 +11,9 @@ spec:
     targetRevision: "17.4.0"
     helm:
       values: |
+        podSecurityContext:
+          fsGroup: 1000
+          fsGroupChangePolicy: "OnRootMismatch"
         persistence:
           config:
             enabled: true
