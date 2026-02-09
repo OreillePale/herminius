@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prowlarr
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://k8s-home-lab.github.io/helm-charts/
+    chart: radarr
+    targetRevision: "5.2.1"
+    helm:
+      values: |
+        persistence:
+          config:
+            enabled: true
+            size: 2Gi
+            storageClass: longhorn-double
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: arrstack
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
