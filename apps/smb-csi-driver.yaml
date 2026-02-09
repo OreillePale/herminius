@@ -14,6 +14,14 @@ spec:
         - name: gcr.io/k8s-staging-sig-storage/smbplugin
           newName: ghcr.io/k8s-sigs/csi-driver-smb/smb-node-driver
           newTag: arm64-latest
+      patches:
+        - target:
+            kind: DaemonSet
+            name: csi-smb-node
+            namespace: kube-system
+          patch: |-
+            - op: remove
+              path: /spec/template/spec/containers/0/livenessProbe
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
