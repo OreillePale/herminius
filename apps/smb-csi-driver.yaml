@@ -9,6 +9,11 @@ spec:
     repoURL: https://github.com/kubernetes-csi/csi-driver-smb
     targetRevision: master
     path: deploy
+    kustomize:
+      images:
+        - name: gcr.io/k8s-staging-sig-storage/smbplugin
+          newName: ghcr.io/k8s-sigs/csi-driver-smb/smb-node-driver
+          newTag: arm64-latest
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
