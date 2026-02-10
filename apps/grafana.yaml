@@ -8,13 +8,13 @@ spec:
   source:
     repoURL: https://grafana.github.io/helm-charts
     chart: grafana
-    targetRevision: "10.5.15"
+    targetRevision: "8.8.2"  # or whatever version you want
     helm:
       values: |
         persistence:
           enabled: true
           size: 5Gi
-          storageClassName: longhorn-double
+          storageClass: longhorn-double
   destination:
     server: https://kubernetes.default.svc
     namespace: grafana
@@ -23,5 +23,5 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-      serverSideApply: true
-      createNamespace: true
+      - ServerSideApply=true
+      - CreateNamespace=true
