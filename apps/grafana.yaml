@@ -6,8 +6,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://k8s-home-lab.github.io/helm-charts/
-    chart: radarr
+    repoURL: https://grafana.github.io/helm-charts
+    chart: grafana
     targetRevision: "10.5.15"
     helm:
       values: |
