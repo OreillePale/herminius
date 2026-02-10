@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://grafana.github.io/helm-charts
     chart: grafana
-    targetRevision: "8.8.2"  # or whatever version you want
+    targetRevision: "10.5.15"  # or whatever version you want
     helm:
       values: |
         persistence:
