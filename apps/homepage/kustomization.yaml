@@ -1,0 +1,10 @@
+resources:
+  - bookmarks.yaml
+  - widgets.yaml
+helmCharts:
+  - name: homepage
+    namespace: homepage
+    version: 4.6.0
+    repo: ghcr.io/m0nsterrr/helm-charts
+    releaseName: homepage
+  
