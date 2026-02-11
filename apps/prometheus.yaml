@@ -8,19 +8,17 @@ spec:
   source:
     repoURL: https://prometheus-community.github.io/helm-charts
     chart: prometheus
-    targetRevision: "28.9.0"  # or whatever version you want
+    targetRevision: "28.9.0"
     helm:
       values: |
-        # Global scrape interval set to 1 minute (reduced from default 15s to lower CPU usage)
-        serverFiles:
-          prometheus.yml:
-            global:
-              scrape_interval: 1m
-              scrape_timeout: 50s  # Must be less than scrape_interval
-              evaluation_interval: 1m
-
+        # Set global scrape settings at the server level
         server:
-          # Data retention set to 5 days (reduced from default 15d to save RAM)
+          global:
+            scrape_interval: 1m
+            scrape_timeout: 50s
+            evaluation_interval: 1m
+          
+          # Data retention set to 5 days
           retention: "5d"
           
           persistentVolume:
@@ -31,10 +29,10 @@ spec:
           # Additional flags to reduce resource consumption
           extraFlags:
             - web.enable-lifecycle
-            - storage.tsdb.wal-compression  # Enable WAL compression to reduce disk I/O and storage
-            - query.max-samples=50000000    # Limit query complexity to prevent CPU spikes
+            - storage.tsdb.wal-compression
+            - query.max-samples=50000000
           
-          # Resource limits to prevent runaway consumption
+          # Resource limits
           resources:
             limits:
               cpu: 1000m
@@ -42,18 +40,16 @@ spec:
             requests:
               cpu: 500m
               memory: 1Gi
-
+        
         alertmanager:
           enabled: true
-
-        # kube-state-metrics disabled to reduce scrape targets and resource usage
+        
         kubeStateMetrics:
           enabled: false
-
+        
         nodeExporter:
           enabled: true
-
-        # pushgateway disabled to reduce resource usage
+        
         pushgateway:
           enabled: false
   destination:
