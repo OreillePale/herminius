@@ -11,17 +11,49 @@ spec:
     targetRevision: "28.9.0"  # or whatever version you want
     helm:
       values: |
+        # Global scrape interval set to 1 minute (reduced from default 15s to lower CPU usage)
+        serverFiles:
+          prometheus.yml:
+            global:
+              scrape_interval: 1m
+              scrape_timeout: 50s  # Must be less than scrape_interval
+              evaluation_interval: 1m
+
         server:
+          # Data retention set to 5 days (reduced from default 15d to save RAM)
+          retention: "5d"
+          
           persistentVolume:
             enabled: true
             size: 8Gi
             storageClass: longhorn-single
+          
+          # Additional flags to reduce resource consumption
+          extraFlags:
+            - web.enable-lifecycle
+            - storage.tsdb.wal-compression  # Enable WAL compression to reduce disk I/O and storage
+            - query.max-samples=50000000    # Limit query complexity to prevent CPU spikes
+          
+          # Resource limits to prevent runaway consumption
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 2Gi
+            requests:
+              cpu: 500m
+              memory: 1Gi
+
         alertmanager:
           enabled: true
+
+        # kube-state-metrics disabled to reduce scrape targets and resource usage
         kubeStateMetrics:
           enabled: false
+
         nodeExporter:
           enabled: true
+
+        # pushgateway disabled to reduce resource usage
         pushgateway:
           enabled: false
   destination:
