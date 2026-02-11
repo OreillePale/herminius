@@ -4,11 +4,13 @@ helmCharts:
     version: 4.6.0
     repo: ghcr.io/m0nsterrr/helm-charts
     releaseName: homepage
-    volumeMounts:
-      - mountPath: /app/config/bookmarks.yaml
-        name: homepage-config
-        subPath: bookmarks.yaml
-      - mountPath: /app/config/widgets.yaml
-        name: homepage-config
-        subPath: widgets.yaml
+    helm:
+      values: | 
+        volumeMounts:
+          - mountPath: /app/config/bookmarks.yaml
+            name: homepage-config
+            subPath: bookmarks.yaml
+          - mountPath: /app/config/widgets.yaml
+            name: homepage-config
+            subPath: widgets.yaml
   
