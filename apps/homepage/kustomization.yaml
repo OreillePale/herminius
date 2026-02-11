@@ -1,6 +1,3 @@
-resources:
-  - bookmarks.yaml
-  - widgets.yaml
 helmCharts:
   - name: homepage
     namespace: homepage
