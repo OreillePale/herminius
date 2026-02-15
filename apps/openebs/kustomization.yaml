@@ -13,6 +13,10 @@ helmCharts:
             enabled: true
           mayastor:
             enabled: false
+      backup:
+        enabled: false      # disables MinIO
+      monitoring:
+        enabled: false      # disables Loki + Prometheus
 
 resources:
   - sc-local.yaml
