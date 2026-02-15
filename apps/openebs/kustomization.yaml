@@ -3,7 +3,7 @@ helmCharts:
     repo: https://openebs.github.io/openebs
     releaseName: openebs
     namespace: openebs
-    version: 3.10.0 
+    version: 4.4.0
     valuesInline:
       engines:
         local:
