@@ -14,7 +14,7 @@ spec:
         persistence:
           enabled: true
           size: 5Gi
-          storageClass: longhorn-double
+          storageClass: openebs-jiva
   destination:
     server: https://kubernetes.default.svc
     namespace: grafana
