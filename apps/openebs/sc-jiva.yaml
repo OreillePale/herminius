@@ -1,0 +1,8 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: openebs-jiva
+provisioner: openebs.io/provisioner-iscsi
+parameters:
+  replicaCount: "2"
+volumeBindingMode: WaitForFirstConsumer
