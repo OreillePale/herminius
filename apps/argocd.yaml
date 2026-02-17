@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/OreillePale/herminius
     targetRevision: main
-    path: apps/arrstack
+    path: apps/argocd
     kustomize:
       buildOptions: --enable-helm
 
