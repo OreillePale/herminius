@@ -8,4 +8,4 @@ data:
     jsonPointers:
       - /status
       - /metadata/annotations/reconcile.external-secrets.io~1force-sync
-  kustomize.buildOptions.v5: "--enable-helm"
+  #kustomize.buildOptions.v5: "--enable-helm"
