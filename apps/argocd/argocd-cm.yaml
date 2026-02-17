@@ -8,4 +8,5 @@ data:
   resource.customizations.ignoreDifferences.external-secrets.io_ExternalSecret: |
     jsonPointers:
       - /status
-      - /metadata/annotations/reconcile.external-secrets.io~1force-sync
+      - /metadata/annotations
+      - /metadata/finalizers
