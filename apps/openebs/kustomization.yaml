@@ -19,6 +19,5 @@ helmCharts:
         enabled: false      # disables Loki + Prometheus
 
 resources:
-  - sc-local.yaml
   - sc-jiva.yaml
   - sc-hostpath.yaml
