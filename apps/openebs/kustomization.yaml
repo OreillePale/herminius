@@ -17,6 +17,8 @@ helmCharts:
         enabled: false      # disables MinIO
       monitoring:
         enabled: false      # disables Loki + Prometheus
+      loki:
+        enabled: false
 
 resources:
   - sc-jiva.yaml
