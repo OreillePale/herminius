@@ -10,7 +10,9 @@ spec:
     repoURL: https://github.com/OreillePale/herminius
     targetRevision: main
     path: apps/openebs
-
+    kustomize:
+      buildOptions: --enable-helm
+      
   destination:
     server: https://kubernetes.default.svc
     namespace: openebs
