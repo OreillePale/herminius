@@ -7,6 +7,4 @@ helmCharts:
     repo: https://charts.fossorial.io
     releaseName: newt
     namespace: pangolin
-    valuesInline: {}
     valuesFile: values.yaml
-    includeCRDs: false
