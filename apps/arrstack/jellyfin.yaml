@@ -15,15 +15,13 @@ spec:
           config:
             enabled: true
             size: 10Gi
-            storageClass: longhorn-double
+            storageClass: nfs-subdir
           data:
             enabled: true
-            size: 10Gi
-            storageClass: longhorn-double
-          # Mount the SMB media PVC like other volumes
+            existingClaim: media
           media:
             enabled: true
-            existingClaim: smb-media-pvc
+            existingClaim: media
         env:
           - name: PUID
             value: "1000"
