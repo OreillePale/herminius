@@ -1,6 +1,6 @@
 resources:
   - media-pvc.yaml
-#  - jellyfin.yaml
+  - jellyfin.yaml
 #  - radarr.yaml
 #  - sonarr.yaml
 #  - prowlarr.yaml
