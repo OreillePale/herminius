@@ -31,9 +31,6 @@ spec:
             enabled: true
             existingClaim: media
 
-    service:
-      type: NodePort
-      nodePort: 32000
   destination:
     server: https://kubernetes.default.svc
     namespace: arrstack
