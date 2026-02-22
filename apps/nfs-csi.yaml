@@ -1,27 +1,27 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nfs-provisioner
+  name: csi-driver-nfs
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
-    chart: nfs-subdir-external-provisioner
-    targetRevision: 4.1.1
+    repoURL: https://github.com/kubernetes-csi/csi-driver-nfs
+    path: deploy/kubernetes-helm
+    targetRevision: master
     helm:
       values: |
         nfs:
-          server: 192.168.1.8
-          path: /mnt/nas
+          server: 192.168.1.8   # Pi NAS static IP
+          path: /mnt/nas         # Root folder on the NFS server
         storageClass:
           name: nfs-subdir
           defaultClass: true
           allowVolumeExpansion: true
         pv:
-          reclaimPolicy: Retain
+          reclaimPolicy: Retain     # Keep data if PVC is deleted
         pvc:
-          subdirectoryPattern: "{{ .PVC.Namespace }}-{{ .PVC.Name }}"
+          subdirectoryPattern: "{{ .PVC.Namespace }}-{{ .PVC.Name }}"  # Human-readable subfolders
   destination:
     server: https://kubernetes.default.svc
     namespace: nfs-provisioner
