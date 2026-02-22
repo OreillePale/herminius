@@ -22,7 +22,7 @@ spec:
           config:
             enabled: true
             size: 2Gi
-            storageClass: nfs-subdir
+            storageClass: openebs-jiva
           media:
             enabled: true
             existingClaim: media
