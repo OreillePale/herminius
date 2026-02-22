@@ -15,7 +15,7 @@ spec:
           runOnControlPlane: true
         nfs:
           server: 192.168.1.8
-          path:/mnt/nas
+          path: /mnt/nas
         storageClass:
           name: nfs-subdir
           defaultClass: true
