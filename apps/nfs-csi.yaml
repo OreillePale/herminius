@@ -1,31 +1,32 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: csi-driver-nfs
+  name: nfs-csi
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/kubernetes-csi/csi-driver-nfs
-    path: deploy/kubernetes-helm
-    targetRevision: master
+    repoURL: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
+    chart: csi-driver-nfs
+    targetRevision: 4.13.1
     helm:
       values: |
-        nfs:
-          server: 192.168.1.8   # Pi NAS static IP
-          path: /mnt/nas         # Root folder on the NFS server
+        controller:
+          runOnControlPlane: true
         storageClass:
           name: nfs-subdir
           defaultClass: true
           allowVolumeExpansion: true
         pv:
-          reclaimPolicy: Retain     # Keep data if PVC is deleted
+          reclaimPolicy: Retain
         pvc:
-          subdirectoryPattern: "{{ .PVC.Namespace }}-{{ .PVC.Name }}"  # Human-readable subfolders
+          subdirectoryPattern: "{{ .PVC.Namespace }}-{{ .PVC.Name }}"  # human-readable folders
   destination:
     server: https://kubernetes.default.svc
-    namespace: nfs-provisioner
+    namespace: nfs-csi
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
