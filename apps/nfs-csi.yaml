@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nfs-provisioner
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+    chart: nfs-subdir-external-provisioner
+    targetRevision: 4.1.1
+    helm:
+      values: |
+        nfs:
+          server: 192.168.1.8
+          path: /mnt/nas
+        storageClass:
+          name: nfs-subdir
+          defaultClass: true
+          allowVolumeExpansion: true
+        pv:
+          reclaimPolicy: Retain
+        pvc:
+          subdirectoryPattern: "{{ .PVC.Namespace }}-{{ .PVC.Name }}"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: nfs-provisioner
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
