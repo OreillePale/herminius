@@ -11,25 +11,29 @@ spec:
     targetRevision: "2.7.0"
     helm:
       values: |
+        podSecurityContext:
+          fsGroup: 1000
+          fsGroupChangePolicy: "OnRootMismatch"
+    
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+    
         persistence:
           config:
             enabled: true
             size: 10Gi
             storageClass: nfs-subdir
-          data:
-            enabled: true
-            existingClaim: media
+            accessModes:
+              - ReadWriteMany
+    
           media:
             enabled: true
             existingClaim: media
-        env:
-          - name: PUID
-            value: "1000"
-          - name: PGID
-            value: "1000"
-        service:
-          type: NodePort
-          nodePort: 32000
+
+    service:
+      type: NodePort
+      nodePort: 32000
   destination:
     server: https://kubernetes.default.svc
     namespace: arrstack
