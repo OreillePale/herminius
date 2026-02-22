@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv
+  name: arrstack-pv
 spec:
   capacity:
-    storage: 1.3Ti
+    storage: 1.2Ti
   accessModes:
-    - ReadWriteMany   # allows multiple pods to write at once
+    - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   nfs:
     path: /mnt/nas/media
