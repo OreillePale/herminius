@@ -18,11 +18,10 @@ spec:
           config:
             enabled: true
             size: 2Gi
-            storageClass: longhorn-double
-            # Mount the SMB media PVC like other volumes
+            storageClass: nfs-subdir
           media:
             enabled: true
-            existingClaim: smb-media-pvc
+            existingClaim: media
   destination:
     server: https://kubernetes.default.svc
     namespace: arrstack
