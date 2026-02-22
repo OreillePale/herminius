@@ -21,7 +21,7 @@ spec:
           reclaimPolicy: Retain
           parameters:
             server: 192.168.1.8
-            share: /mnt/nas
+            share: /mnt/nas/data
             subDir: "${pvc.metadata.namespace}-${pvc.metadata.name}"
   destination:
     server: https://kubernetes.default.svc
