@@ -9,21 +9,20 @@ spec:
     repoURL: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
     chart: csi-driver-nfs
     targetRevision: 4.13.1
-    helm:
-      values: |
-        controller:
-          runOnControlPlane: true
-        nfs:
+  helm:
+    values: |
+      controller:
+        runOnControlPlane: true
+      storageClass:
+        create: true
+        name: nfs-subdir
+        defaultClass: true
+        allowVolumeExpansion: true
+        reclaimPolicy: Retain
+        parameters:
           server: 192.168.1.8
-          path: /mnt/nas
-        storageClass:
-          name: nfs-subdir
-          defaultClass: true
-          allowVolumeExpansion: true
-        pv:
-          reclaimPolicy: Retain
-        pvc:
-          subdirectoryPattern: "{{ .PVC.Namespace }}-{{ .PVC.Name }}"  # human-readable folders
+          share: /mnt/nas
+          subDir: "${pvc.metadata.namespace}-${pvc.metadata.name}"
   destination:
     server: https://kubernetes.default.svc
     namespace: nfs-csi
@@ -33,12 +32,3 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
----
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: nfs-subdir
-provisioner: nfs.csi.k8s.io
-reclaimPolicy: Retain
-allowVolumeExpansion: true
-volumeBindingMode: Immediate
