@@ -24,7 +24,7 @@ spec:
           persistentVolume:
             enabled: true
             size: 8Gi
-            storageClass: openebs-local
+            storageClass: longhorn-local
           
           # Additional flags to reduce resource consumption
           extraFlags:
