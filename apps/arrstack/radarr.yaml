@@ -22,7 +22,7 @@ spec:
           config:
             enabled: true
             size: 2Gi
-            storageClass: openebs-jiva
+            storageClass: longhorn-double
           media:
             enabled: true
             existingClaim: media
