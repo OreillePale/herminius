@@ -48,7 +48,7 @@ spec:
               provisioner: driver.longhorn.io
               allowVolumeExpansion: true
               volumeBindingMode: Immediate
-              reclaimPolicy: Delete
+              reclaimPolicy: Retain
               parameters:
                 numberOfReplicas: "1"
 
@@ -61,7 +61,7 @@ spec:
               provisioner: driver.longhorn.io
               allowVolumeExpansion: true
               volumeBindingMode: Immediate
-              reclaimPolicy: Delete
+              reclaimPolicy: Retain
               parameters:
                 numberOfReplicas: "2"
   destination:
