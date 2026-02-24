@@ -23,7 +23,7 @@ spec:
           config:
             enabled: true
             size: 10Gi
-            storageClass: openebs-jiva
+            storageClass: longhorn-double
             accessModes:
               - ReadWriteMany
     
