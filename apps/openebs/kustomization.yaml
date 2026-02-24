@@ -10,9 +10,9 @@ helmCharts:
           enabled: false
         replicated:
           jiva:
-            enabled: true
-          mayastor:
             enabled: false
+          mayastor:
+            enabled: true
       backup:
         enabled: false
       monitoring:
