@@ -23,3 +23,5 @@ helmCharts:
 resources:
   - sc-jiva.yaml
   - sc-hostpath.yaml
+  - sc-jiva2.yaml
+  - vp.yaml
