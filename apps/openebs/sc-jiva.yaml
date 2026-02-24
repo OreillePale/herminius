@@ -1,15 +1,10 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: openebs-jiva
-  annotations:
-    openebs.io/cas-type: jiva
-    cas.openebs.io/config: |
-      - name: ReplicaCount
-        value: "2"
-      - name: StoragePool
-        value: default
-provisioner: openebs.io/provisioner-iscsi
-volumeBindingMode: WaitForFirstConsumer
-reclaimPolicy: Delete
+  name: openebs-jiva3
+provisioner: jiva.csi.openebs.io
 allowVolumeExpansion: true
+parameters:
+  replicaCount: "2"
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
