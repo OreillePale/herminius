@@ -12,7 +12,7 @@ helmCharts:
           jiva:
             enabled: false
           mayastor:
-            enabled: true
+            enabled: false
       backup:
         enabled: false
       monitoring:
