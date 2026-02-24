@@ -12,7 +12,7 @@ helmCharts:
           jiva:
             enabled: false
           mayastor:
-            enabled: false
+            enabled: true
       backup:
         enabled: false
       monitoring:
@@ -23,4 +23,4 @@ helmCharts:
 resources:
   #- sc-jiva.yaml
   - sc-hostpath.yaml
-  #- mayastor-2.yaml
+  - mayastor-2.yaml
