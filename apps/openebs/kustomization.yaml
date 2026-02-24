@@ -21,6 +21,6 @@ helmCharts:
         enabled: false
 
 resources:
-  - sc-jiva.yaml
+  #- sc-jiva.yaml
   - sc-hostpath.yaml
-  - mayastor-2.yaml
+  #- mayastor-2.yaml
