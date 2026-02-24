@@ -20,8 +20,12 @@ helmCharts:
       loki:
         enabled: false
 
+  - name: jiva-operator
+    repo: https://openebs.github.io/jiva-operator
+    releaseName: jiva-operator
+    namespace: openebs
+    version: 3.6.0
+
 resources:
   - sc-jiva.yaml
   - sc-hostpath.yaml
-  - sc-jiva2.yaml
-  - vp.yaml
