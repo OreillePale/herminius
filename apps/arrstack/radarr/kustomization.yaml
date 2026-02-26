@@ -1,0 +1,4 @@
+resources:
+  - radarr.yaml
+#  - nightly-backup.yaml
+  - external-secret.yaml
