@@ -26,6 +26,11 @@ spec:
           media:
             enabled: true
             existingClaim: media
+          backups:
+            enabled: true
+            size: 2Gi
+            storageClass: nfs-subdir
+            mountPath: /config/Backups
   destination:
     server: https://kubernetes.default.svc
     namespace: arrstack
