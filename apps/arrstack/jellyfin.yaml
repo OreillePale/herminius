@@ -23,13 +23,20 @@ spec:
           config:
             enabled: true
             size: 10Gi
-            storageClass: longhorn-double
+            storageClass: local-path
             accessModes:
               - ReadWriteMany
     
           media:
             enabled: true
             existingClaim: media
+
+          backups:
+            enabled: true
+            size: 2Gi
+            storageClass: nfs-subdir
+            mountPath: /config/data/backups
+            accessMode: ReadWriteOnce
 
   destination:
     server: https://kubernetes.default.svc
