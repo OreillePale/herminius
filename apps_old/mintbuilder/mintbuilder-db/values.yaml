@@ -1,9 +1,0 @@
-Namespace: mintbuilder
-Name: mintbuilder-db
-Image: risbobo/mintdb:0.0.1
-Replicas: 1
-ContainerPort: 5433
-NodePort: 5432
-MountPath: /app-data
-Path: /mintbuilder-db
-Storage: 5Gi

@@ -1,9 +1,0 @@
-Namespace: mintbuilder
-Name: bot
-Image: risbobo/mintbuilder-bot:0.0.1
-Replicas: 1
-ContainerPort: 80
-NodePort: 80
-MountPath: /app-data
-Path: /mintbuilder-bot
-Storage: 100Mi
