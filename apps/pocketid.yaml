@@ -15,7 +15,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: arrstack
+    namespace: pocketid
 
   syncPolicy:
     automated:
