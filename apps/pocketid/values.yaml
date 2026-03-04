@@ -11,3 +11,11 @@ controllers:
         envFrom:
           - secretRef:
               name: pocketid-secret
+              
+service:
+  app:
+    controller: pocketid
+    ports:
+      http:
+        port: 80
+        targetPort: 3000
