@@ -17,5 +17,5 @@ service:
     controller: pocketid
     ports:
       http:
-        port: 3055
+        port: 1411
         targetPort: 1411
