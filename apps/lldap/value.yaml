@@ -1,0 +1,18 @@
+controllers:
+  pocketid:
+    containers:
+      app:
+        image:
+          repository: lldap/lldap
+          tag: v0.6.2
+        envFrom:
+          - secretRef:
+              name: lldap-secret
+              
+service:
+  app:
+    controller: lldap
+    ports:
+      http:
+        port: 17170
+        targetPort: 17170
