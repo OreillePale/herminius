@@ -1,9 +1,12 @@
 resources:
   - external-secret.yaml
-
+  
 helmCharts:
   - name: lldap
     namespace: lldap
     version: 1.0.8
     repo: oci://ghcr.io/alexmorbo/helm-charts
     releaseName: lldap
+    valuesInline:
+      persistence:
+        storageClass: local-path
