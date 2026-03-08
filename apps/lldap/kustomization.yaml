@@ -1,0 +1,9 @@
+resources:
+  - external-secret.yaml
+
+helmCharts:
+  - name: lldap
+    namespace: lldap
+    version: 1.0.8
+    repo: https://github.com/alexmorbo/helm-charts
+    releaseName: lldap
