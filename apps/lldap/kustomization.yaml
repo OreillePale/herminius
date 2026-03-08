@@ -5,5 +5,5 @@ helmCharts:
   - name: lldap
     namespace: lldap
     version: 1.0.8
-    repo: ghcr.io/alexmorbo/helm-charts
+    repo: oci://ghcr.io/alexmorbo/helm-charts
     releaseName: lldap
