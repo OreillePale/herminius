@@ -4,6 +4,6 @@ helmCharts:
   - name: app-template
     version: 4.6.2
     repo: https://bjw-s-labs.github.io/helm-charts
-    namespace: pocketid
-    releaseName: pocketid
+    namespace: lldap
+    releaseName: lldap
     valuesFile: values.yaml
