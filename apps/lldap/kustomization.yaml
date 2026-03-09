@@ -1,12 +1,9 @@
 resources:
   - external-secret.yaml
-  
 helmCharts:
-  - name: lldap
-    namespace: lldap
-    version: 1.0.8
-    repo: oci://ghcr.io/alexmorbo/helm-charts
-    releaseName: lldap
-    valuesInline:
-      persistence:
-        storageClass: local-path
+  - name: app-template
+    version: 4.6.2
+    repo: https://bjw-s-labs.github.io/helm-charts
+    namespace: pocketid
+    releaseName: pocketid
+    valuesFile: values.yaml
