@@ -1,0 +1,5 @@
+resources:
+  - resend-secret.yaml
+  - authelia-secret.yaml
+
+helmCharts:
