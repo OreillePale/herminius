@@ -16,3 +16,7 @@ service:
       http:
         port: 17170
         targetPort: 17170
+      lldap:
+        port: 3890
+        targetPort: 3890
+      
