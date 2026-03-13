@@ -1,3 +1,4 @@
+# Non-sensitive configuration stays in configMap
 configMap:
   theme: dark
 
@@ -19,26 +20,39 @@ configMap:
       - domain: "*.flickers.cc"
         policy: one_factor
 
-  session:
-    name: authelia_session
-    domain: flickers.cc
-    expiration: 3600
-    inactivity: 300
-    secret: ${SESSION_SECRET}
+# Session config is separate from configMap
+session:
+  name: authelia_session
+  domain: flickers.cc
+  expiration: 3600
+  inactivity: 300
+  secret:
+    valueFrom:
+      secretKeyRef:
+        name: authelia-secret
+        key: SESSION_SECRET
 
-  storage:
-    postgres:
-      address: cluster0-rw.nativecloudpg.svc.cluster.local:5432
-      database: authelia
-      username: authelia
-      password: ${POSTGRES_PASSWORD}
+storage:
+  postgres:
+    address: cluster0-rw.nativecloudpg.svc.cluster.local:5432
+    database: authelia
+    username: authelia
+    password:
+      valueFrom:
+        secretKeyRef:
+          name: authelia-secret
+          key: POSTGRES_PASSWORD
 
-  notifier:
-    smtp:
-      address: smtp.resend.com:587
-      username: resend
-      password: ${RESEND_API_KEY}
-      sender: "Authelia <noreply@flickers.cc>"
+notifier:
+  smtp:
+    address: smtp.resend.com:587
+    username: resend
+    password:
+      valueFrom:
+        secretKeyRef:
+          name: resend-secret
+          key: RESEND_API_KEY
+    sender: "Authelia <noreply@flickers.cc>"
 
 persistence:
   enabled: false
