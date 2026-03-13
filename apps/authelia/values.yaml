@@ -1,58 +1,42 @@
-# Non-sensitive configuration stays in configMap
 configMap:
   theme: dark
-
   authentication_backend:
     ldap:
       address: ldap://lldap.lldap.svc.cluster.local:3890
       base_dn: dc=example,dc=com
       additional_users_dn: ou=people
       users_filter: "(&(objectClass=person)(uid={input}))"
-
       additional_groups_dn: ou=groups
       groups_filter: "(member={dn})"
-
       user: "uid=lldap_reader,ou=people,dc=example,dc=com"
-
   access_control:
     default_policy: deny
     rules:
       - domain: "*.flickers.cc"
         policy: one_factor
+  session:
+    name: authelia_session
+    domain: flickers.cc
+    expiration: 3600
+    inactivity: 300
+  storage:
+    postgres:
+      address: cluster0-rw.nativecloudpg.svc.cluster.local:5432
+      database: authelia
+      username: authelia
+  notifier:
+    smtp:
+      address: smtp.resend.com:587
+      username: resend
+      sender: "Authelia <noreply@flickers.cc>"
 
-# Session config is separate from configMap
-session:
-  name: authelia_session
-  domain: flickers.cc
-  expiration: 3600
-  inactivity: 300
-  secret:
-    valueFrom:
-      secretKeyRef:
-        name: authelia-secret
-        key: SESSION_SECRET
-
-storage:
-  postgres:
-    address: cluster0-rw.nativecloudpg.svc.cluster.local:5432
-    database: authelia
-    username: authelia
-    password:
-      valueFrom:
-        secretKeyRef:
-          name: authelia-secret
-          key: POSTGRES_PASSWORD
-
-notifier:
-  smtp:
-    address: smtp.resend.com:587
-    username: resend
-    password:
-      valueFrom:
-        secretKeyRef:
-          name: resend-secret
-          key: RESEND_API_KEY
-    sender: "Authelia <noreply@flickers.cc>"
+secret:
+  existingSecret: resend-secret  
+  additionalSecrets:
+    resend-secret:
+      items:
+        - key: RESEND_API_KEY
+          path: SMTP_PASSWORD  # chart looks for SMTP_PASSWORD internally
 
 persistence:
   enabled: false
