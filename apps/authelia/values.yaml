@@ -36,7 +36,7 @@ secret:
     resend-secret:
       items:
         - key: RESEND_API_KEY
-          path: SMTP_PASSWORD
+          path: RESEND_API_KEY
 
 persistence:
   enabled: false
