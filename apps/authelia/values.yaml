@@ -16,9 +16,11 @@ configMap:
         policy: one_factor
   session:
     name: authelia_session
-    domain: flickers.cc
     expiration: 3600
     inactivity: 300
+    cookies:
+      - domain: flickers.cc
+        subdomain: auth
   storage:
     postgres:
       address: cluster0-rw.nativecloudpg.svc.cluster.local:5432
@@ -36,7 +38,7 @@ secret:
     resend-secret:
       items:
         - key: RESEND_API_KEY
-          path: RESEND_API_KEY
+          path: SMTP_PASSWORD
 
 persistence:
   enabled: false
