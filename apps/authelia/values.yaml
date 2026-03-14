@@ -30,8 +30,8 @@ configMap:
       database: authelia
       username: authelia
       password:
-        secretName: *secret
-        secretKey: POSTGRES_PASSWORD
+        secret_name: *secret
+        secret_key: POSTGRES_PASSWORD
   notifier:
     smtp:
       address: smtp.resend.com:587
