@@ -27,8 +27,8 @@ configMap:
       database: authelia
       username: authelia
       password:
-        secret_name: authelia-secret
-        key: POSTGRES_PASSWORD
+        secretName: *secret
+        secretKey: POSTGRES_PASSWORD
   notifier:
     smtp:
       address: smtp.resend.com:587
@@ -36,7 +36,7 @@ configMap:
       sender: "Authelia <noreply@flickers.cc>"
 
 secret:
-  existingSecret: authelia-secret
+  existingSecret: &secret authelia-secret
 
 persistence:
   enabled: false
