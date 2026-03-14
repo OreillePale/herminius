@@ -1,6 +1,11 @@
 secret:
   existingSecret: &secret authelia-secret
 
+env:
+  AUTHELIA_JWT_SECRET:
+    secretName: *secret
+    secretKey: JWT_HMAC_KEY
+
 configMap:
   theme: dark
   authentication_backend:
@@ -29,7 +34,6 @@ configMap:
       address: cluster0-rw.nativecloudpg.svc.cluster.local:5432
       database: authelia
       username: authelia
-      password: "{{ env POSTGRES_PASSWORD }}"
   notifier:
     smtp:
       address: smtp.resend.com:587
