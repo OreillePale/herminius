@@ -1,3 +1,7 @@
+secret:
+  existingSecret: authelia-secret
+
+envFrom: {}
 
 configMap:
   theme: dark
@@ -32,11 +36,8 @@ configMap:
       address: smtp.resend.com:587
       username: resend
       sender: "Authelia <noreply@flickers.cc>"
-  methods:
-    secrets:
-      existingSecret: authelia-secret
-      keys:
-        jwt_secret: JWT_HMAC_KEY
+
+
 
 
 
