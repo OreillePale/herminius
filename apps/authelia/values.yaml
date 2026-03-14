@@ -1,7 +1,7 @@
 secret:
   existingSecret: authelia-secret
   
-extraEnv: {}
+env: {}
 
 configMap:
   theme: dark
