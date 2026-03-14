@@ -1,3 +1,6 @@
+secret:
+  existingSecret: &secret authelia-secret
+
 configMap:
   theme: dark
   authentication_backend:
@@ -35,8 +38,7 @@ configMap:
       username: resend
       sender: "Authelia <noreply@flickers.cc>"
 
-secret:
-  existingSecret: &secret authelia-secret
+
 
 persistence:
   enabled: false
