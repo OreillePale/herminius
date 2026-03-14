@@ -34,11 +34,6 @@ configMap:
 
 secret:
   existingSecret: authelia-secret
-  additionalSecrets:
-    resend-secret:
-      items:
-        - key: RESEND_API_KEY
-          path: SMTP_PASSWORD
 
 persistence:
   enabled: false
