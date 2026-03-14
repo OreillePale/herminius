@@ -20,12 +20,13 @@ configMap:
     inactivity: 300
     cookies:
       - domain: flickers.cc
-        subdomain: auth
+        subdomain: authelia
   storage:
     postgres:
       address: cluster0-rw.nativecloudpg.svc.cluster.local:5432
       database: authelia
       username: authelia
+      password: '142857'
   notifier:
     smtp:
       address: smtp.resend.com:587
