@@ -1,0 +1,10 @@
+resources:
+  - voidauth-secret.yaml
+
+helmCharts:
+  - name: app-template
+    version: 4.6.2
+    repo: https://bjw-s-labs.github.io/helm-charts
+    namespace: voidauth
+    releaseName: voidauth
+    valuesFile: values.yaml
