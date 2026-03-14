@@ -1,10 +1,9 @@
-secret:
-  existingSecret: &secret authelia-secret
+secrets:
+  existingSecret: authelia-secret
+  keys:
+    jwt_secret: JWT_HMAC_KEY
 
-env:
-  AUTHELIA_JWT_SECRET:
-    secretName: *secret
-    secretKey: JWT_HMAC_KEY
+environment: {} # sometimes charts allow extra env vars here
 
 configMap:
   theme: dark
