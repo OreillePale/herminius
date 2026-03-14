@@ -26,7 +26,7 @@ configMap:
       address: cluster0-rw.nativecloudpg.svc.cluster.local:5432
       database: authelia
       username: authelia
-      password: '142857'
+      password: ${POSTGRES_PASSWORD}
   notifier:
     smtp:
       address: smtp.resend.com:587
