@@ -32,10 +32,11 @@ configMap:
       address: smtp.resend.com:587
       username: resend
       sender: "Authelia <noreply@flickers.cc>"
-  secrets:
-    existingSecret: authelia-secret
-    keys:
-      jwt_secret: JWT_HMAC_KEY
+  methods:
+    secrets:
+      existingSecret: authelia-secret
+      keys:
+        jwt_secret: JWT_HMAC_KEY
 
 
 
