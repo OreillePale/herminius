@@ -8,3 +8,4 @@ resources:
   - bazarr.yaml
   - seerr.yaml
   - seerr-secret.yaml
+  - seerr-pvc.yaml
