@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: seerr
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: ghcr.io/seerr-team/seerr
+    chart: seerr-chart
+    targetRevision: "1.0.0"
+    helm:
+      values: |
+        podSecurityContext:
+          fsGroup: 1000
+          fsGroupChangePolicy: "OnRootMismatch"
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+          allowPrivilegeEscalation: false
+        env:
+          DB_TYPE: postgres
+          DB_HOST: cluster0-rw.nativecloudpg.svc.cluster.local
+          DB_PORT: "5432"
+          DB_NAME: seerr
+          DB_USER: seerr
+        envFrom:
+          - secretRef:
+              name: seerr-secret
+        persistence:
+          config:
+            enabled: true
+            size: 1Gi
+            storageClass: nfs-subdir
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: arrstack
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
