@@ -9,3 +9,4 @@ resources:
   - seerr.yaml
   - seerr-secret.yaml
   - seerr-pvc.yaml
+  - seerr-service.yaml
