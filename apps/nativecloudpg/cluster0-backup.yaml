@@ -12,7 +12,7 @@ spec:
 apiVersion: postgresql.cnpg.io/v1
 kind: Backup
 metadata:
-  name: cluster0-initial
+  name: cluster0-initial2
   namespace: nativecloudpg
 spec:
   method: barmanObjectStore
