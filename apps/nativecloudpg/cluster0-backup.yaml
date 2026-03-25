@@ -2,12 +2,12 @@ apiVersion: postgresql.cnpg.io/v1
 kind: ScheduledBackup
 metadata:
   name: cluster0-backup
+  namespace: nativecloudpg
 spec:
-  schedule: "0 2 * * *"   # daily at 2am
+  schedule: "0 2 * * *"
   backupOwnerReference: self
   cluster:
     name: cluster0
-
 ---
 apiVersion: postgresql.cnpg.io/v1
 kind: Backup
