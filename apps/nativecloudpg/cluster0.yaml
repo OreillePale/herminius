@@ -2,9 +2,26 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
   name: cluster0
+  namespace: nativecloudpg
 spec:
   instances: 2
-
   storage:
     size: 50Gi
     storageClass: local-path
+
+  backup:
+    barmanObjectStore:
+      destinationPath: "s3://flickers/cluster0"
+      endpointURL: "https://c8a8be6625a837aef566fbdc4ba32692.r2.cloudflarestorage.com"
+      s3Credentials:
+        accessKeyId:
+          name: cloudflare-secret
+          key: ACCOUNT_ID
+        secretAccessKey:
+          name: cloudflare-secret
+          key: API_TOKEN
+      wal:
+        compression: gzip
+      data:
+        compression: gzip
+    retentionPolicy: "7d"
