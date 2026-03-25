@@ -1,0 +1,20 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  name: cluster0-backup
+spec:
+  schedule: "0 2 * * *"   # daily at 2am
+  backupOwnerReference: self
+  cluster:
+    name: cluster0
+
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Backup
+metadata:
+  name: cluster0-initial
+  namespace: nativecloudpg
+spec:
+  method: barmanObjectStore
+  cluster:
+    name: cluster0
