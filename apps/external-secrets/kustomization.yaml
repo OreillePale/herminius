@@ -2,7 +2,7 @@
 #  - stores
 helmCharts:
   - name: external-secrets
-    version: 1.3.2
+    version: 2.2.0
     repo: https://charts.external-secrets.io
     namespace: external-secrets
     releaseName: external-secrets
