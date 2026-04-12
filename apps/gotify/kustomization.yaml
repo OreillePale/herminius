@@ -1,0 +1,7 @@
+helmCharts:
+  - name: gotify
+    repo: https://pmoscode-helm.github.io/gotify/
+    version: 2.9.0
+    releaseName: gotify
+    namespace: gotify
+    valuesFile: values.yaml
