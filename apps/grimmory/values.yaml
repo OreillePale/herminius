@@ -1,0 +1,64 @@
+controllers:
+  grimmory:
+    containers:
+      app:
+        image:
+          repository: grimmory/grimmory
+          tag: "v2.2.1"
+        env:
+          PUID: 1000
+          PGID: 1000
+          TZ: Etc/UTC
+          DATABASE_URL: jdbc:mariadb://mariadb.grimmory.svc.cluster.local:3306/grimmory
+
+  mariadb:
+    containers:
+      app:
+        image:
+          repository: lscr.io/linuxserver/mariadb
+          tag: "11.4.5"
+        env:
+          PUID: 1000
+          PGID: 1000
+          TZ: Etc/UTC
+          MYSQL_DATABASE: grimmory
+          MYSQL_USER: grimmory
+        volumeMounts:
+          - name: mardiadb-config
+            mountPath: /config
+            
+service:
+  app:
+    controller: grimmory
+    ports:
+      http:
+        port: 6060
+        targetPort: 6060
+
+persistence:
+  mariadb-config:
+    enabled: true
+    accessMode: local-path
+    storageClass: loca-path
+    size: 5Gi
+
+  grimmory-data:
+    enabled: true
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce # needed for future litestream sidecar
+    storageClass: local-path
+    size: 5Gi
+
+  grimmory-books:
+    enabled: true
+    type: persistentVolumeClaim
+    accessMode: ReadWriteMany
+    storageClass: nfs-subdir
+    size: 10Gi
+
+  grimmory-bookdrop:
+    enabled: true
+    type: persistentVolumeClaim
+    accessMode: ReadWriteMany
+    storageClass: nfs-subdir
+    size: 2Gi
