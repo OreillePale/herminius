@@ -1,0 +1,7 @@
+helmCharts:
+  - name: app-template
+    version: 4.6.2
+    repo: https://bjw-s-labs.github.io/helm-charts
+    namespace: grimmory
+    releaseName: grimmory
+    valuesFile: values.yaml
