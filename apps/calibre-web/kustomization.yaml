@@ -1,0 +1,10 @@
+#we'll put the litestream sidecar here
+#resources:
+
+helmCharts:
+  - name: app-template
+    version: 4.6.2
+    repo: https://bjw-s-labs.github.io/helm-charts
+    namespace: calibre-web
+    releaseName: calibre-web
+    valuesFile: values.yaml
