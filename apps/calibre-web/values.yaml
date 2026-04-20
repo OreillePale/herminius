@@ -1,5 +1,5 @@
 controllers:
-  voidauth:
+  calibre-web:
     containers:
       app:
         image:
