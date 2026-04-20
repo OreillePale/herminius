@@ -22,7 +22,7 @@ persistence:
   config:
     enabled: true
     type: persistentVolumeClaim
-    accessMode: ReadWriteMany # needed for future litestream sidecar
+    accessMode: ReadWriteOnce # needed for future litestream sidecar
     storageClass: local-path
     size: 2Gi
 
