@@ -23,7 +23,7 @@ persistence:
     enabled: true
     type: persistentVolumeClaim
     accessMode: ReadWriteMany # needed for future litestream sidecar
-    storageClass: local-pv
+    storageClass: local-path
     size: 2Gi
 
   books:
