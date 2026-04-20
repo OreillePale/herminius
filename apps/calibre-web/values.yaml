@@ -1,0 +1,30 @@
+controllers:
+  voidauth:
+    containers:
+      app:
+        image:
+          repository: linuxserver/calibre-web
+          tag: "0.6.26"
+        env:
+          PUID: 1000
+          PGID: 1000
+          TZ: Etc/UTC
+              
+service:
+  app:
+    controller: calibre-web
+    ports:
+      http:
+        port: 8083
+        targetPort: 8083
+
+persistence:
+  config:
+    type: storageClass
+    storageClass: "local-pv"
+    size: 2 Gi
+
+  books:
+    config: storageClass
+    storageClass: "nfs-subdir"
+    size: 10 Gi
