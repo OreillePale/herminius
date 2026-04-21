@@ -10,7 +10,19 @@ controllers:
           PGID: 1000
           TZ: Etc/UTC
           DATABASE_URL: jdbc:mariadb://mariadb.grimmory.svc.cluster.local:3306/grimmory
-
+          DATABASE_USERNAME: grimmory
+          DATABASE_PASSWORD: 
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: DB_PASSWORD
+          volumeMounts:
+            - name: grimmory-data
+              mountPath: /config
+            - name: grimmory-books
+              mountPath: /books
+            - name: grimmory-bookdrop
+              mountPath: /bookdrop
   mariadb:
     containers:
       app:
@@ -23,8 +35,18 @@ controllers:
           TZ: Etc/UTC
           MYSQL_DATABASE: grimmory
           MYSQL_USER: grimmory
+          MYSQL_PASSWORD:
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: DB_PASSWORD
+          MYSQL_ROOT_PASSWORD:
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: ROOT_PASSWORD                  
         volumeMounts:
-          - name: mardiadb-config
+          - name: mariadb-config
             mountPath: /config
             
 service:
@@ -34,12 +56,18 @@ service:
       http:
         port: 6060
         targetPort: 6060
+  mariadb:
+    controller: mariadb
+    ports:
+      db:
+        port: 3306
+        targetPort: 3306
 
 persistence:
   mariadb-config:
     enabled: true
-    accessMode: local-path
-    storageClass: loca-path
+    accessMode: ReadWriteOnce
+    storageClass: local-path
     size: 5Gi
 
   grimmory-data:
