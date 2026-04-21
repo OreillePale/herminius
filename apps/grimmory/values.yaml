@@ -9,7 +9,7 @@ controllers:
           PUID: 1000
           PGID: 1000
           TZ: Etc/UTC
-          DATABASE_URL: jdbc:mariadb://mariadb.grimmory.svc.cluster.local:3306/grimmory
+          DATABASE_URL: jdbc:mariadb://grimmory-mariadb.grimmory.svc.cluster.local:3306/grimmory
           DATABASE_USERNAME: grimmory
           DATABASE_PASSWORD:
             valueFrom:
