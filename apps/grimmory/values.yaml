@@ -6,22 +6,16 @@ controllers:
           repository: grimmory/grimmory
           tag: "v2.2.1"
         env:
-          - name: PUID
-            value: "1000"
-          - name: PGID
-            value: "1000"
-          - name: TZ
-            value: Etc/UTC
-          - name: DATABASE_URL
-            value: jdbc:mariadb://mariadb.grimmory.svc.cluster.local:3306/grimmory
-          - name: DATABASE_USERNAME
-            value: grimmory
-          - name: DATABASE_PASSWORD
+          PUID: 1000
+          PGID: 1000
+          TZ: Etc/UTC
+          DATABASE_URL: jdbc:mariadb://mariadb.grimmory.svc.cluster.local:3306/grimmory
+          DATABASE_USERNAME: grimmory
+          DATABASE_PASSWORD:
             valueFrom:
               secretKeyRef:
                 name: db-secret
                 key: DB_PASSWORD
-
   mariadb:
     containers:
       app:
@@ -29,22 +23,17 @@ controllers:
           repository: lscr.io/linuxserver/mariadb
           tag: "11.4.5"
         env:
-          - name: PUID
-            value: "1000"
-          - name: PGID
-            value: "1000"
-          - name: TZ
-            value: Etc/UTC
-          - name: MYSQL_DATABASE
-            value: grimmory
-          - name: MYSQL_USER
-            value: grimmory
-          - name: MYSQL_PASSWORD
+          PUID: 1000
+          PGID: 1000
+          TZ: Etc/UTC
+          MYSQL_DATABASE: grimmory
+          MYSQL_USER: grimmory
+          MYSQL_PASSWORD:
             valueFrom:
               secretKeyRef:
                 name: db-secret
                 key: DB_PASSWORD
-          - name: MYSQL_ROOT_PASSWORD
+          MYSQL_ROOT_PASSWORD:
             valueFrom:
               secretKeyRef:
                 name: db-secret
@@ -57,7 +46,6 @@ service:
       http:
         port: 6060
         targetPort: 6060
-
   mariadb:
     controller: mariadb
     ports:
@@ -68,36 +56,40 @@ service:
 persistence:
   mariadb-config:
     enabled: true
-    type: persistentVolumeClaim
     accessMode: ReadWriteOnce
     storageClass: local-path
     size: 5Gi
-    globalMounts:
-      - path: /config
-
+    advancedMounts:
+      mariadb:
+        app:
+          - path: /config
   grimmory-data:
     enabled: true
     type: persistentVolumeClaim
     accessMode: ReadWriteOnce
     storageClass: local-path
     size: 5Gi
-    globalMounts:
-      - path: /config
-
+    advancedMounts:
+      grimmory:
+        app:
+          - path: /config
   grimmory-books:
     enabled: true
     type: persistentVolumeClaim
     accessMode: ReadWriteMany
     storageClass: nfs-subdir
     size: 10Gi
-    globalMounts:
-      - path: /books
-
+    advancedMounts:
+      grimmory:
+        app:
+          - path: /books
   grimmory-bookdrop:
     enabled: true
     type: persistentVolumeClaim
     accessMode: ReadWriteMany
     storageClass: nfs-subdir
     size: 2Gi
-    globalMounts:
-      - path: /bookdrop
+    advancedMounts:
+      grimmory:
+        app:
+          - path: /bookdrop
