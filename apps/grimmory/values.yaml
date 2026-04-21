@@ -6,23 +6,22 @@ controllers:
           repository: grimmory/grimmory
           tag: "v2.2.1"
         env:
-          PUID: 1000
-          PGID: 1000
-          TZ: Etc/UTC
-          DATABASE_URL: jdbc:mariadb://mariadb.grimmory.svc.cluster.local:3306/grimmory
-          DATABASE_USERNAME: grimmory
-          DATABASE_PASSWORD: 
+          - name: PUID
+            value: "1000"
+          - name: PGID
+            value: "1000"
+          - name: TZ
+            value: Etc/UTC
+          - name: DATABASE_URL
+            value: jdbc:mariadb://mariadb.grimmory.svc.cluster.local:3306/grimmory
+          - name: DATABASE_USERNAME
+            value: grimmory
+          - name: DATABASE_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: db-secret
                 key: DB_PASSWORD
-          volumeMounts:
-            - name: grimmory-data
-              mountPath: /config
-            - name: grimmory-books
-              mountPath: /books
-            - name: grimmory-bookdrop
-              mountPath: /bookdrop
+
   mariadb:
     containers:
       app:
@@ -30,25 +29,27 @@ controllers:
           repository: lscr.io/linuxserver/mariadb
           tag: "11.4.5"
         env:
-          PUID: 1000
-          PGID: 1000
-          TZ: Etc/UTC
-          MYSQL_DATABASE: grimmory
-          MYSQL_USER: grimmory
-          MYSQL_PASSWORD:
+          - name: PUID
+            value: "1000"
+          - name: PGID
+            value: "1000"
+          - name: TZ
+            value: Etc/UTC
+          - name: MYSQL_DATABASE
+            value: grimmory
+          - name: MYSQL_USER
+            value: grimmory
+          - name: MYSQL_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: db-secret
                 key: DB_PASSWORD
-          MYSQL_ROOT_PASSWORD:
+          - name: MYSQL_ROOT_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: db-secret
-                key: ROOT_PASSWORD                  
-        volumeMounts:
-          - name: mariadb-config
-            mountPath: /config
-            
+                key: ROOT_PASSWORD
+
 service:
   app:
     controller: grimmory
@@ -56,6 +57,7 @@ service:
       http:
         port: 6060
         targetPort: 6060
+
   mariadb:
     controller: mariadb
     ports:
@@ -66,16 +68,21 @@ service:
 persistence:
   mariadb-config:
     enabled: true
+    type: persistentVolumeClaim
     accessMode: ReadWriteOnce
     storageClass: local-path
     size: 5Gi
+    globalMounts:
+      - path: /config
 
   grimmory-data:
     enabled: true
     type: persistentVolumeClaim
-    accessMode: ReadWriteOnce # needed for future litestream sidecar
+    accessMode: ReadWriteOnce
     storageClass: local-path
     size: 5Gi
+    globalMounts:
+      - path: /config
 
   grimmory-books:
     enabled: true
@@ -83,6 +90,8 @@ persistence:
     accessMode: ReadWriteMany
     storageClass: nfs-subdir
     size: 10Gi
+    globalMounts:
+      - path: /books
 
   grimmory-bookdrop:
     enabled: true
@@ -90,3 +99,5 @@ persistence:
     accessMode: ReadWriteMany
     storageClass: nfs-subdir
     size: 2Gi
+    globalMounts:
+      - path: /bookdrop
