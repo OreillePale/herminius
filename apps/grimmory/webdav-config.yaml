@@ -10,5 +10,5 @@ data:
     directory: /data
     permissions: CRUD
     users:
-      - username: "{env}WEBDAV_USERNAME"
-        password: "{env}WEBDAV_PASSWORD"
+      - username: "{env}ENV_USERNAME"
+        password: "{env}ENV_PASSWORD"
