@@ -1,5 +1,6 @@
 resources:
   - external-secret.yaml
+  - webdav-config.yaml
 
 helmCharts:
   - name: app-template
