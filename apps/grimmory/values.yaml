@@ -42,20 +42,20 @@ controllers:
     containers:
       app:
         image:
-          repository: bytemark/webdav
-          tag: "latest"
+          repository: ghcr.io/hacdias/webdav
+          tag: "v5.11.6"
         env:
-          AUTH_TYPE: Basic
-          USERNAME:
+          WEBDAV_AUTH_USERNAME:
             valueFrom:
               secretKeyRef:
                 name: db-secret
                 key: WEBDAV_USERNAME
-          PASSWORD:
+          WEBDAV_AUTH_PASSWORD:
             valueFrom:
               secretKeyRef:
                 name: db-secret
                 key: WEBDAV_PASSWORD
+          WEBDAV_SERVER_ROOT: /data
 
 service:
   app:
@@ -109,7 +109,7 @@ persistence:
           - path: /books
       webdav:
         app:
-          - path: /var/lib/dav/data
+          - path: /data
   grimmory-bookdrop:
     enabled: true
     type: persistentVolumeClaim
