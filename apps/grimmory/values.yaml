@@ -38,6 +38,24 @@ controllers:
               secretKeyRef:
                 name: db-secret
                 key: ROOT_PASSWORD
+  webdav:
+    containers:
+      app:
+        image:
+          repository: bytemark/webdav
+          tag: "latest"
+        env:
+          AUTH_TYPE: Basic
+          USERNAME:
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: WEBDAV_USERNAME
+          PASSWORD:
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: WEBDAV_PASSWORD
 
 service:
   app:
@@ -52,6 +70,12 @@ service:
       db:
         port: 3306
         targetPort: 3306
+  webdav:
+    controller: webdav
+    ports:
+      http:
+        port: 80
+        targetPort: 80
 
 persistence:
   mariadb-config:
@@ -83,6 +107,9 @@ persistence:
       grimmory:
         app:
           - path: /books
+      webdav:
+        app:
+          - path: /var/lib/dav/data
   grimmory-bookdrop:
     enabled: true
     type: persistentVolumeClaim
