@@ -44,19 +44,6 @@ controllers:
         image:
           repository: ghcr.io/hacdias/webdav
           tag: "v5.11.6"
-        env:
-          WEBDAV_AUTH_USERNAME:
-            valueFrom:
-              secretKeyRef:
-                name: db-secret
-                key: WEBDAV_USERNAME
-          WEBDAV_AUTH_PASSWORD:
-            valueFrom:
-              secretKeyRef:
-                name: db-secret
-                key: WEBDAV_PASSWORD
-          WEBDAV_SERVER_ROOT: /data
-
 service:
   app:
     controller: grimmory
@@ -120,3 +107,12 @@ persistence:
       grimmory:
         app:
           - path: /bookdrop
+  webdav-config:
+    enabled: true
+    type: configMap
+    name: webdav-config
+    advancedMounts:
+      webdav:
+        app:
+          - path: /config.yml
+            subPath: config.yaml
