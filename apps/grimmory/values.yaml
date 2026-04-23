@@ -74,8 +74,8 @@ service:
     controller: webdav
     ports:
       http:
-        port: 80
-        targetPort: 80
+        port: 6065
+        targetPort: 6065
 
 persistence:
   mariadb-config:
