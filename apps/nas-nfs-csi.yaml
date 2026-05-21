@@ -15,7 +15,7 @@ spec:
           runOnControlPlane: true
         storageClass:
           create: true
-          name: nfs-subdir
+          name: nas-nfs-subdir
           allowVolumeExpansion: true
           reclaimPolicy: Retain
           parameters:
