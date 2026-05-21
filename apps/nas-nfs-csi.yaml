@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nas-nfs-csi
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
+    chart: csi-driver-nfs
+    targetRevision: 4.13.1
+    helm:
+      values: |
+        controller:
+          runOnControlPlane: true
+        storageClass:
+          create: true
+          name: nfs-subdir
+          allowVolumeExpansion: true
+          reclaimPolicy: Retain
+          parameters:
+            server: 192.168.1.70
+            share: /mnt/HDD-pool/NAS0/cluster
+            subDir: "${pvc.metadata.namespace}-${pvc.metadata.name}"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: nfs-csi
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
