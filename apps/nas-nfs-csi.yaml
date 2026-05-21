@@ -24,7 +24,7 @@ spec:
             subDir: "${pvc.metadata.namespace}-${pvc.metadata.name}"
   destination:
     server: https://kubernetes.default.svc
-    namespace: nfs-csi
+    namespace: nas-nfs-csi
   syncPolicy:
     automated:
       prune: true
