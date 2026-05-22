@@ -44,5 +44,15 @@ parameters:
   server: 192.168.1.70
   share: /mnt/HDD-pool/NFS0/cluster
   subDir: "${pvc.metadata.namespace}-${pvc.metadata.name}"
-mountOptions:
-  - nfsvers=4
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nas0-nfs-2
+provisioner: nfs.csi.k8s.io
+reclaimPolicy: Retain
+allowVolumeExpansion: true
+parameters:
+  server: 192.168.1.70
+  share: /mnt/HDD-pool/NFS0/cluster
+  subDir: "${pvc.metadata.namespace}-${pvc.metadata.name}"
