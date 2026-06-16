@@ -5,30 +5,22 @@ metadata:
   namespace: argocd
 spec:
   project: default
+
   source:
-    repoURL: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
-    chart: csi-driver-nfs
-    targetRevision: 4.13.1
-    helm:
-      values: |
-        controller:
-          runOnControlPlane: true
-        storageClass:
-          create: true
-          name: nfs-subdir
-          defaultClass: true
-          allowVolumeExpansion: true
-          reclaimPolicy: Retain
-          parameters:
-            server: 192.168.1.8
-            share: /mnt/nas/data
-            subDir: "${pvc.metadata.namespace}-${pvc.metadata.name}"
+    repoURL: https://github.com/OreillePale/herminius
+    targetRevision: main
+    path: apps/nfs-csi
+    kustomize:
+      buildOptions: --enable-helm
+
   destination:
     server: https://kubernetes.default.svc
     namespace: nfs-csi
+
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+      - ServerSideApply=true
