@@ -1,0 +1,12 @@
+resources:
+
+helmCharts:
+  - name: csi-driver-nfs
+    repo: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
+    version: 4.13.1
+    namespace: nfs-csi
+    valuesInline:
+      controller:
+        runOnControlPlane: true
+      storageClass:
+        create: false
