@@ -1,4 +1,5 @@
 resources:
+  - truenas-root.yaml
 
 helmCharts:
   - name: csi-driver-nfs
