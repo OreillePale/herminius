@@ -3,8 +3,8 @@ controllers:
     containers:
       app:
         image:
-          repository: redis/redis
-          tag: "8.6.4-alpine"
+          repository: bitnami/redis
+          tag: "sha256-fe9accf438c086794b3708aca6796b94115836aca9f373d53942058380dcac11"
         env:
           ALLOW_EMPTY_PASSWORD: "yes"
 
