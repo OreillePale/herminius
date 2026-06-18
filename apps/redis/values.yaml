@@ -3,7 +3,7 @@ controllers:
     containers:
       app:
         image:
-          repository: redis/redis
+          repository: redis
           tag: "8.8.0-alpine"
 
 service:
