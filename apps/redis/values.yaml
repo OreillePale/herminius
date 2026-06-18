@@ -1,0 +1,17 @@
+controllers:
+  redis:
+    containers:
+      app:
+        image:
+          repository: redis/redis
+          tag: "8.6.4-alpine"
+        env:
+          ALLOW_EMPTY_PASSWORD: "yes"
+
+service:
+  app:
+    controller: redis
+    ports:
+      http:
+        port: 6379
+        targetPort: 6379
