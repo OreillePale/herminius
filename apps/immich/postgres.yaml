@@ -6,7 +6,7 @@ metadata:
 spec:
   instances: 1
 
-  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:17.6-0.5.3
+  imageName: ghcr.io/cloudnative-pg/postgresql:18-standard-trixie
 
   bootstrap:
     initdb:
@@ -14,6 +14,8 @@ spec:
       owner: immich
       secret:
         name: postgres-cred
+      postInitSQL:
+        - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
 
   storage:
     size: 1Gi
