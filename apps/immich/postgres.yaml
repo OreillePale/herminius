@@ -6,7 +6,7 @@ spec:
   instances: 1
 
   storage:
-    size: 5Gis
+    size: 5Gi
     storageClass: local-path
 
   imageName: ghcr.io/cloudnative-pg/postgresql:18-standard-trixie
