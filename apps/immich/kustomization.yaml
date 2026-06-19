@@ -1,3 +1,13 @@
 resources:
   - postgres.yaml
   - external-secret.yaml
+  - pvc-library.yaml
+  - values.yaml
+
+helmCharts:
+  - name: immich
+    repo: oci://ghcr.io/immich-app/immich-charts
+    version: "0.10.2"
+    releaseName: immich
+    namespace: immich
+    valuesFile: values.yaml
