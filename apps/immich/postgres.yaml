@@ -6,7 +6,7 @@ metadata:
 spec:
   instances: 1
 
-  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:pg16-v0.4.3
+  imageName: ghcr.io/cloudnative-pg/postgresql:18-standard-trixie
 
   bootstrap:
     initdb:
@@ -24,11 +24,11 @@ spec:
     extensions:
       - name: vchord
         image:
-          reference: ghcr.io/tensorchord/vchord-scratch:pg16-v0.4.3
+          reference: ghcr.io/tensorchord/vchord-scratch:pg18-v1.1.1
         dynamic_library_path:
-          - /usr/lib/postgresql/16/lib
+          - /usr/lib/postgresql/18/lib
         extension_control_path:
-          - /usr/share/postgresql/16/
+          - /usr/share/postgresql/18/
 
 ---
 apiVersion: postgresql.cnpg.io/v1
