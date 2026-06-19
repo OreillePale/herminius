@@ -2,7 +2,6 @@ resources:
   - postgres.yaml
   - external-secret.yaml
   - pvc-library.yaml
-  - values.yaml
 
 helmCharts:
   - name: immich
