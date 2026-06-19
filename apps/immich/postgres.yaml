@@ -17,6 +17,7 @@ spec:
 
   storage:
     size: 1Gi
+    storageClass: local-path
 
   postgresql:
     shared_preload_libraries:
