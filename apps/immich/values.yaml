@@ -3,30 +3,21 @@ immich:
     library:
       existingClaim: immich-library
 
-  configuration:
-    database:
-      hostname: your-postgres-host   # e.g. postgres.database.svc.cluster.local
-      port: 5432
-      database: immich
-      username: immich
-      password:
-        # Reference the secret you created
-        valueFrom:
-          secretKeyRef:
-            name: immich-credentials
-            key: db-password
+env:
+  DB_HOSTNAME: "immich-database-rw"
+  DB_USERNAME: "immich"
+  DB_DATABASE_NAME: "immich"
+  DB_PASSWORD:
+    valueFrom:
+      secretKeyRef:
+        name: postgres-cred
+        key: POSTGRES_PASSWORD
+  REDIS_HOSTNAME: "redis.redis.svc.cluster.local"
+  REDIS_PORT: "6379"
 
-    redis:
-      hostname: your-redis-host      # e.g. redis.infra.svc.cluster.local
-      port: 6379
-      # If your Redis has a password:
-      # password: your-redis-password
-
-# Disable the built-in Valkey/Redis since you have your own
 valkey:
   enabled: false
 
-# No ingress for now
 server:
   ingress:
     main:
