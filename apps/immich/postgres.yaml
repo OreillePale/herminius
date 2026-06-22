@@ -12,7 +12,7 @@ spec:
   bootstrap:
     initdb:
       database: immich
-      username: immich
+      owner: immich
       secret:
         name: postgres-cred
   postgresql:
