@@ -25,17 +25,4 @@ spec:
           - /usr/lib/postgresql/18/lib
         extension_control_path:
           - /usr/share/postgresql/18/
----
-apiVersion: postgresql.cnpg.io/v1
-kind: Database
-metadata:
-  name: immich
-  namespace: immich
-spec:
-  cluster:
-    name: immich-database
-  name: immich
-  owner: immich
-  extensions:
-    - name: vchord
-      ensure: present
+
