@@ -23,17 +23,4 @@ spec:
   postgresql:
     shared_preload_libraries:
       - "vchord.so"
----
-apiVersion: postgresql.cnpg.io/v1
-kind: Database
-metadata:
-  name: immich
-  namespace: immich
-spec:
-  cluster:
-    name: immich-database
-  name: immich
-  owner: immich
-  extensions:
-    - name: vchord
-      ensure: present
+
