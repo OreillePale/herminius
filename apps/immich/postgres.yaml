@@ -4,18 +4,19 @@ metadata:
   name: immich-database
 spec:
   instances: 1
-
   storage:
     size: 5Gi
     storageClass: local-path
-
   imageName: ghcr.io/cloudnative-pg/postgresql:18-standard-trixie
-
+  bootstrap:
+    initdb:
+      database: immich
+      username: immich
+      secret:
+        name: postgres-cred
   postgresql:
     shared_preload_libraries:
       - "vchord.so"
-
-    # This extension is loaded via the Database CRD at cloudnative-pg-database.yaml
     extensions:
       - name: vchord
         image:
@@ -24,5 +25,17 @@ spec:
           - /usr/lib/postgresql/18/lib
         extension_control_path:
           - /usr/share/postgresql/18/
-
-
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: immich
+  namespace: immich
+spec:
+  cluster:
+    name: immich-database
+  name: immich
+  owner: immich
+  extensions:
+    - name: vchord
+      ensure: present
