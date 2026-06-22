@@ -1,5 +1,7 @@
 resources:
   - truenas-root.yaml
+  - truenas-root-backup.yaml
+  - truenas-root-nobackup.yaml
 
 helmCharts:
   - name: csi-driver-nfs
