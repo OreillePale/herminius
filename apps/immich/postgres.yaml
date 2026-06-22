@@ -15,6 +15,8 @@ spec:
       owner: immich
       secret:
         name: postgres-cred
+    postInitSQL:
+      - CREATE EXTENSION IF NOT EXISTS vector;
   postgresql:
     shared_preload_libraries:
       - "vchord.so"
