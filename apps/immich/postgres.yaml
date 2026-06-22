@@ -15,7 +15,7 @@ spec:
       owner: immich
       secret:
         name: postgres-cred
-    postInitSQL:
+    postInitApplicationSQL:
       - CREATE EXTENSION IF NOT EXISTS vector;
   postgresql:
     shared_preload_libraries:
