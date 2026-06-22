@@ -17,6 +17,9 @@ spec:
         name: postgres-cred
       postInitSQL:
         - CREATE EXTENSION IF NOT EXISTS vector;
+        - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
+        - CREATE EXTENSION IF NOT EXISTS cube CASCADE;
+        - CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
   postgresql:
     shared_preload_libraries:
       - "vchord.so"
