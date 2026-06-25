@@ -10,3 +10,4 @@ resources:
   - seerr-secret.yaml
   - seerr-pvc.yaml
   - seerr-service.yaml
+  - pvc-media2.yaml
