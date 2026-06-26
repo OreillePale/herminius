@@ -29,7 +29,7 @@ spec:
               name: seerr-secret
         persistence:
           config:
-            existingClaim: seerr-config-2
+            existingClaim: seerr-config
   destination:
     server: https://kubernetes.default.svc
     namespace: arrstack
