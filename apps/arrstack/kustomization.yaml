@@ -8,7 +8,7 @@ resources:
   - bazarr.yaml
   - seerr.yaml
   - seerr-secret.yaml
-  - seerr-pvc.yaml
-  - seerr-pvc2.yaml
+  #- seerr-pvc.yaml
+  #- seerr-pvc2.yaml
   - seerr-service.yaml
   - pvc-media2.yaml
