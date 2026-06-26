@@ -25,7 +25,7 @@ spec:
             storageClass: local-path
           media:
             enabled: true
-            existingClaim: media
+            existingClaim: media2
   destination:
     server: https://kubernetes.default.svc
     namespace: arrstack
