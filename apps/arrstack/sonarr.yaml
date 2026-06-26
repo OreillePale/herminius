@@ -25,11 +25,11 @@ spec:
             storageClass: local-path
           media:
             enabled: true
-            existingClaim: media
+            existingClaim: media2
           backups:
             enabled: true
             size: 2Gi
-            storageClass: nfs-subdir
+            storageClass: truenas-root-nobackup
             mountPath: /config/Backups
             accessMode: ReadWriteOnce
   destination:
