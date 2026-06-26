@@ -29,7 +29,7 @@ spec:
     
           media:
             enabled: true
-            existingClaim: media
+            existingClaim: media2
 
           backups:
             enabled: true
