@@ -29,7 +29,7 @@ spec:
           backups:
             enabled: true
             size: 2Gi
-            storageClass: nfs-subdir
+            storageClass: truenas-root-nobackup
             mountPath: /config/backup
             accessMode: ReadWriteOnce
   destination:
