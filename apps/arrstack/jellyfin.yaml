@@ -11,6 +11,7 @@ spec:
     targetRevision: "3.2.0"
     helm:
       values: |
+        replicaCount: 0
         podSecurityContext:
           fsGroup: 1000
           fsGroupChangePolicy: "OnRootMismatch"
