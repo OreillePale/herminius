@@ -16,7 +16,7 @@ spec:
         nodeSelector:
           kubernetes.io/hostname: workertn
         
-        podSecurityContext:Back up a PVC to object storage and restore it later. Use this for backups, one-off exports, or moves where direct cluster-to-cluster connectivity is awkward.
+        podSecurityContext:
           fsGroup: 1000
           fsGroupChangePolicy: "OnRootMismatch"
     
