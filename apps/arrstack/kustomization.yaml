@@ -12,3 +12,4 @@ resources:
   #- seerr-pvc2.yaml
   - seerr-service.yaml
   - pvc-media2.yaml
+  - jellyfin-config-migrate-pvc.yaml
