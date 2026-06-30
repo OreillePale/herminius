@@ -3,7 +3,7 @@ controllers:
     containers:
       app:
         image:
-          repository: antiagosayshey/profilarr
+          repository: santiagosayshey/profilarr
           tag: "v1.1.5"
         env:
           TZ: UTC
