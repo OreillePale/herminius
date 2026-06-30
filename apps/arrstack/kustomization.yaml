@@ -15,6 +15,6 @@ helmCharts:
   - name: app-template
     version: 5.0.0
     repo: https://bjw-s-labs.github.io/helm-charts
-    namespace: profilarr
-    releaseName: grimmory
+    namespace: arrstack
+    releaseName: profilarr
     valuesFile: profilarr-values.yaml
