@@ -1,0 +1,29 @@
+controllers:
+  profilarr:
+    containers:
+      app:
+        image:
+          repository: antiagosayshey/profilarr
+          tag: "v1.1.5"
+        env:
+          TZ: UTC
+
+persistence:
+  profilarr-config:
+    enabled: true
+    accessMode: ReadWriteOnce
+    storageClass: local-path
+    size: 5Gi
+    advancedMounts:
+      mariadb:
+        app:
+          - path: /config
+
+service:
+  app:
+    controller: profilarr
+    ports:
+      http:
+        port: 6868
+        targetPort: 6868
+
