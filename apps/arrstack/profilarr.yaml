@@ -9,8 +9,6 @@ spec:
     repoURL: https://helm.charliemaiors.dev
     chart: profilarr
     targetRevision: "0.1.2"
-    helm:
-      values: |
   destination:
     server: https://kubernetes.default.svc
     namespace: arrstack
