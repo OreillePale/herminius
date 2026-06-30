@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: profilarr
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://helm.charliemaiors.dev
+    chart: profilarr
+    targetRevision: "0.1.2"
+    helm:
+      values: |
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: arrstack
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
