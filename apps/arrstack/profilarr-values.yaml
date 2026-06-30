@@ -6,10 +6,10 @@ controllers:
           repository: ghcr.io/dictionarry-hub/profilarr
           tag: "2.0.9"
         env:
-          - PUID=1000
-          - PGID=1000
-          - UMASK=022
-          - TZ=Etc/UTC
+          PUID: 1000
+          PGID: 1000
+          UMASK: 022
+          TZ: Etc/UTC
 
 persistence:
   profilarr-config:
