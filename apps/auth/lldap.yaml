@@ -1,0 +1,50 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: lldap
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://bjw-s-labs.github.io/helm-charts
+    chart: app-template
+    targetRevision: "5.0.0"
+    helm:
+      values: |
+        controllers:
+          lldap:
+            containers:
+              app:
+                image::
+                  repository: lldap/lldap
+                  tag: "2026-05-25-alpine"
+                  
+        persistence:
+          data:
+            enabled: true
+            accesMode: ReadWriteOnce
+            storageClass: local-path
+            size: 5 Gi
+            advancedMounts:
+              lldap:
+                app:
+                  - path: /data
+
+        service:
+          app:
+            controller: lldap
+            ports:
+              ui:
+                port: 17170
+                targetPort: 17170
+              api:
+                port: 3890
+                targetPort: 3890
+        
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: auth
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
