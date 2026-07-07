@@ -20,7 +20,7 @@ spec:
                   tag: "2026-05-25-alpine"
                 envFrom:
                   - secretRef:
-                      name: lldap-secret
+                      name: external-secret-lldap
               litestream:
                 image:
                   repository: litestream/litestream
