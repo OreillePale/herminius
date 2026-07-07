@@ -28,11 +28,10 @@ spec:
                 args:
                   - replicate
                   - /data/users.db
-                  - s3:<COMPLETE>
+                  - s3://c8a8be6625a837aef566fbdc4ba32692.r2.cloudflarestorage.com/flickers/litestream
                 envFrom:
                   - secretRef:
-                      name: s3-secret
-                  
+                      name: external-secret-s3                  
         persistence:
           data:
             enabled: true
