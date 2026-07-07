@@ -1,2 +1,4 @@
 resources:
   - lldap.yaml
+  - external-secret-s3.yaml
+  - external-secret-lldap.yaml
