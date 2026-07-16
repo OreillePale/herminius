@@ -1,0 +1,30 @@
+controllers:
+  autobrr:
+    containers:
+      app:
+        image:
+          repository: ghcr.io/autobrr/autobrr
+          tag: "v1.82.1"
+        env:
+          PUID: 1000
+          PGID: 1000
+          TZ: Etc/UTC
+          
+persistence:
+  autobrr-config:
+    enabled: true
+    accessMode: ReadWriteOnce
+    storageClass: local-path
+    size: 5Gi
+    advancedMounts:
+      profilarr:
+        app:
+          - path: /config
+
+service:
+  app:
+    controller: autobrr
+    ports:
+      http:
+        port: 7474
+        targetPort: 7474
