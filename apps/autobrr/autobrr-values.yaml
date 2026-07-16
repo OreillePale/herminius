@@ -17,7 +17,7 @@ persistence:
     storageClass: local-path
     size: 5Gi
     advancedMounts:
-      profilarr:
+      autobrr:
         app:
           - path: /config
 
