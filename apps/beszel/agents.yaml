@@ -19,6 +19,9 @@ spec:
           value: "45876"
         - name: HUB_URL
           value: "https://beszel.flickers.cc"
+        envFrom:
+          - secretRef:
+              name: hub-secret
         image: henrygd/beszel-agent:0.18.7-alpine
         imagePullPolicy: Always
         name: beszel-agent
