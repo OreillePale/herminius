@@ -14,7 +14,6 @@ spec:
     spec:
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet #AI black magic, why ?
-      hostname: "{{.Node.Hostname}}"
       containers:
       - env:
         - name: PORT
