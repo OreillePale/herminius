@@ -1,5 +1,6 @@
 resources:
   - external-secret.yaml
+  - agents.yaml
 
 helmCharts:
   - name: app-template
