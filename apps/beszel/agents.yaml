@@ -30,6 +30,7 @@ spec:
         image: henrygd/beszel-agent:0.18.7-alpine
         imagePullPolicy: Always
         name: beszel-agent
+        hostname: "{{.Node.Hostname}}"
         ports:
           - containerPort: 45876
             hostPort: 45876
