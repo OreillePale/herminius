@@ -1,1 +1,29 @@
+controllers:
+  beszel-server:
+    containers:
+      app:
+        image:
+          repository: henrygd/beszel
+          tag: "0.18.7"
+        env:
+          APP_URL=https://beszel.flickers.cc
+          
+persistence:
+  bezsel-server-config:
+    enabled: true
+    accessMode: ReadWriteOnce
+    storageClass: local-path
+    size: 5Gi
+    advancedMounts:
+      profilarr:
+        app:
+          - path: /beszel_data
+
+service:
+  app:
+    controller: beszel-server
+    ports:
+      http:
+        port: 8090
+        targetPort: 8090
 
