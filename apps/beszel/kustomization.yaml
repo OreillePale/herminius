@@ -1,2 +1,9 @@
 resources:
-  - server.yaml
+
+helmCharts:
+  - name: app-template
+    version: 5.0.1
+    repo: https://bjw-s-labs.github.io/helm-charts
+    namespace: beszel
+    releaseName: beszel-server
+    valuesFile: server-values.yaml
