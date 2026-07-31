@@ -13,6 +13,7 @@ spec:
         app: beszel-agent
     spec:
       hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
       containers:
       - env:
         - name: PORT
