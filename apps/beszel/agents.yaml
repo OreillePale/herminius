@@ -13,7 +13,6 @@ spec:
         app: beszel-agent
     spec:
       hostNetwork: true
-      hostname: $(NODE_NAME)
       dnsPolicy: ClusterFirstWithHostNet #AI black magic, why ?
       containers:
       - env:
@@ -21,6 +20,10 @@ spec:
           value: "45876"
         - name: HUB_URL
           value: "http://beszel-server.beszel.svc.cluster.local:8090"
+        - name: HOSTNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
         envFrom:
           - secretRef:
               name: hub-secret
