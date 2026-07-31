@@ -18,7 +18,7 @@ spec:
         - name: PORT
           value: "45876"
         - name: HUB_URL
-          value: "https://beszel.flickers.cc"
+          value: "beszel-server.beszel.svc.cluster.local"
         envFrom:
           - secretRef:
               name: hub-secret
