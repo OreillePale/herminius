@@ -13,7 +13,8 @@ spec:
         app: beszel-agent
     spec:
       hostNetwork: true
-      dnsPolicy: ClusterFirstWithHostNet
+      hostname: $(NODE_NAME)
+      dnsPolicy: ClusterFirstWithHostNet #AI black magic, why ?
       containers:
       - env:
         - name: PORT
