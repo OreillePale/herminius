@@ -15,7 +15,7 @@ persistence:
     storageClass: local-path
     size: 5Gi
     advancedMounts:
-      profilarr:
+      beszel-server:
         app:
           - path: /beszel_data
 
