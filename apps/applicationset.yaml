@@ -12,6 +12,12 @@ spec:
           - app: nfs-csi
           - app: beszel
           - app: grimmory
+          - app: gotify
+          - app: pangolin
+          - app: immich
+          - app: argocd
+          - app: arrstack
+          #- app: auth
 
   template:
     metadata:
