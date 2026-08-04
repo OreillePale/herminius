@@ -7,7 +7,7 @@ spec:
   generators:
     - list:
         elements:
-          #- app: voidauth
+          - app: autobrr
 
   template:
     metadata:
