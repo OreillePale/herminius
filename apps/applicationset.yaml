@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: apps
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          #- app: voidauth
+
+  template:
+    metadata:
+      name: "{{app}}"
+    spec:
+      project: default
+
+      source:
+        repoURL: https://github.com/OreillePale/herminius
+        targetRevision: main
+        path: "apps/{{app}}"
+
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{app}}"
+
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
