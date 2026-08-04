@@ -8,6 +8,10 @@ spec:
     - list:
         elements:
           - app: autobrr
+          - app: redis
+          - app: nfs-csi
+          - app: beszel
+          - app: grimmory
 
   template:
     metadata:
