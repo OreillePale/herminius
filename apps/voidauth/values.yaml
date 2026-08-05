@@ -21,3 +21,6 @@ service:
       http:
         port: 3000
         targetPort: 3000
+      ldap:
+        port: 3890
+        targetPort: 3890
