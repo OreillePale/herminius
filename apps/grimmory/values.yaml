@@ -43,7 +43,7 @@ controllers:
       app:
         image:
           repository: ghcr.io/hacdias/webdav
-          tag: "v5.14.1"
+          tag: "v5.14.2"
         env:
           ENV_USERNAME:
             valueFrom:
