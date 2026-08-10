@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://k8s-home-lab.github.io/helm-charts/
     chart: lidarr
-    targetRevision: "4.5.5"
+    targetRevision: "15.3.1"
 
     helm:
       values: |
