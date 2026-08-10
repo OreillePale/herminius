@@ -11,6 +11,7 @@ resources:
   - seerr-service.yaml
   - pvc-media2.yaml
   - lidarr.yaml
+  - music-init.yaml
 
 helmCharts:
   - name: app-template
