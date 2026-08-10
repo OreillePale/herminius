@@ -1,0 +1,51 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: lidarr
+  namespace: argocd
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://k8s-home-lab.github.io/helm-charts/
+    chart: lidarr
+    targetRevision: "4.5.5"
+
+    helm:
+      values: |
+        podSecurityContext:
+          fsGroup: 1000
+          fsGroupChangePolicy: "OnRootMismatch"
+
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+          allowPrivilegeEscalation: false
+
+        persistence:
+          config:
+            enabled: true
+            size: 2Gi
+            storageClass: local-path
+
+          media:
+            enabled: true
+            existingClaim: media2
+
+          backups:
+            enabled: true
+            size: 2Gi
+            storageClass: truenas-root-nobackup
+            mountPath: /config/Backups
+            accessMode: ReadWriteOnce
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: arrstack
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
