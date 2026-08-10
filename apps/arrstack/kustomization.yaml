@@ -10,6 +10,7 @@ resources:
   - seerr-secret.yaml
   - seerr-service.yaml
   - pvc-media2.yaml
+  - lidarr.yaml
 
 helmCharts:
   - name: app-template
