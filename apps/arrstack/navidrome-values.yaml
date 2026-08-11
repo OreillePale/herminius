@@ -1,0 +1,38 @@
+controllers:
+  navidrome:
+    containers:
+      app:
+        image:
+          repository: deluan/navidrome
+          tag: "pr-5935"
+        env:
+          ND_LOGLEVEL: "info"
+          ND_BASEURL: "https://navidrome.flickers.cc"
+          
+persistence:
+  navidrome-data:
+    enabled: true
+    accessMode: ReadWriteOnce
+    storageClass: local-path
+    size: 5Gi
+    advancedMounts:
+      navidrome:
+        app:
+          - path: /data
+  navidrome-media:
+    enabled: true
+    existingClaim: media2
+    advancedMounts:
+      navidrome:
+        app:
+          - path: /music
+            subPath: music
+            readOnly: true
+    
+service:
+  app:
+    controller: navidrome
+    ports:
+      http:
+        port: 4533
+        targetPort: 4533
