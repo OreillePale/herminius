@@ -13,6 +13,7 @@ resources:
   - lidarr.yaml
   #- music-init.yaml
 
+
 helmCharts:
   - name: app-template
     version: 5.0.1
@@ -20,3 +21,10 @@ helmCharts:
     namespace: arrstack
     releaseName: profilarr
     valuesFile: profilarr-values.yaml
+  
+  - name: app-template
+    version: 5.0.1
+    repo: https://bjw-s-labs.github.io/helm-charts
+    namespace: arrstack
+    releaseName: navidrome
+    valuesFile: navidrome-values.yaml
