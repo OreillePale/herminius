@@ -25,6 +25,18 @@ spec:
         securityContext:
           runAsUser: 1000
           runAsGroup: 1000
+          supplementalGroups:
+            - 992
+        
+        volumes:
+          - name: dri
+            hostPath:
+              path: /dev/dri
+              type: Directory
+        
+        volumeMounts:
+          - name: dri
+            mountPath: /dev/dri
         persistence:
           config:
             enabled: true
