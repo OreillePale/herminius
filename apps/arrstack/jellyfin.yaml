@@ -12,31 +12,36 @@ spec:
     helm:
       values: |
         replicaCount: 1
+
         nodeSelector:
           kubernetes.io/hostname: workertn
+
         tolerations:
           - key: "dedicated"
             operator: "Equal"
             value: "reserved"
             effect: "NoSchedule"
+
         podSecurityContext:
           fsGroup: 1000
           fsGroupChangePolicy: "OnRootMismatch"
+          supplementalGroups:
+            - 992
+
         securityContext:
           runAsUser: 1000
           runAsGroup: 1000
-          supplementalGroups:
-            - 992
-        
+
         volumes:
           - name: dri
             hostPath:
               path: /dev/dri
               type: Directory
-        
+
         volumeMounts:
           - name: dri
             mountPath: /dev/dri
+
         persistence:
           config:
             enabled: true
@@ -44,18 +49,22 @@ spec:
             storageClass: local-path
             accessModes:
               - ReadWriteMany
+
           media:
             enabled: true
             existingClaim: media2
+
           backups:
             enabled: true
             size: 2Gi
             storageClass: nfs-subdir
             mountPath: /config/data/backups
             accessMode: ReadWriteOnce
+
   destination:
     server: https://kubernetes.default.svc
     namespace: arrstack
+
   syncPolicy:
     automated:
       prune: true
