@@ -22,28 +22,14 @@ spec:
         podSecurityContext:
           fsGroup: 1000
           fsGroupChangePolicy: "OnRootMismatch"
-          supplementalGroups:
-            - 992
         securityContext:
           runAsUser: 1000
           runAsGroup: 1000
-          capabilities:
-            add: ["SYS_ADMIN"]
-            drop: ["ALL"]
-          privileged: false
-        jellyfin:
-          env:
-            - name: LIBVA_DRIVER_NAME
-              value: iHD
-            - name: LIBVA_DRIVERS_PATH
-              value: /usr/lib/jellyfin-ffmpeg/lib/dri
-        volumes:
-          - name: hwa
-            hostPath:
-              path: /dev/dri
-        volumeMounts:
-          - name: hwa
-            mountPath: /dev/dri
+        resources:
+          limits:
+            gpu.intel.com/i915: "1"
+          requests:
+            gpu.intel.com/i915: "1"
         persistence:
           config:
             enabled: true
@@ -57,7 +43,7 @@ spec:
           backups:
             enabled: true
             size: 2Gi
-            storageClass: nfs-subdir
+            storageClass: truenas-root-nobackup
             mountPath: /config/data/backups
             accessMode: ReadWriteOnce
   destination:
