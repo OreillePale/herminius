@@ -21,6 +21,7 @@ spec:
           - app: bitwarden
           - app: influxdb
           - app: nativecloudpg
+          - app: intel-igpu
 
   template:
     metadata:
