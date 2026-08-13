@@ -3,13 +3,14 @@ helmCharts:
     repo: https://intel.github.io/helm-charts
     version: 0.35.0
     releaseName: device-plugin-operator
-    namespace: intel-igpu
+    namespace: inteldeviceplugins-system
     includeCRDs: true
 
   - name: intel-device-plugins-gpu
     repo: https://intel.github.io/helm-charts
     version: 0.35.0
     releaseName: gpu-device-plugin
-    namespace: intel-igpu
+    namespace: inteldeviceplugins-system
     valuesInline:
       sharedDevNum: 4
+      nodeFeatureRule: false
