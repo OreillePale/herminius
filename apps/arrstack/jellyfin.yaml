@@ -31,11 +31,12 @@ spec:
             add: ["SYS_ADMIN"]
             drop: ["ALL"]
           privileged: false
-        env:
-          - name: LIBVA_DRIVER_NAME
-            value: iHD
-          - name: LIBVA_DRIVERS_PATH
-            value: /usr/lib/jellyfin-ffmpeg/lib/dri
+        jellyfin:
+          env:
+            - name: LIBVA_DRIVER_NAME
+              value: iHD
+            - name: LIBVA_DRIVERS_PATH
+              value: /usr/lib/jellyfin-ffmpeg/lib/dri
         volumes:
           - name: hwa
             hostPath:
