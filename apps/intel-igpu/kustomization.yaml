@@ -6,11 +6,11 @@ helmCharts:
     namespace: intel-igpu
     includeCRDs: true
     valuesInline:
-    tolerations:
-      - key: "dedicated"
-        operator: "Equal"
-        value: "reserved"
-        effect: "NoSchedule"
+      tolerations:
+        - key: "dedicated"
+          operator: "Equal"
+          value: "reserved"
+          effect: "NoSchedule"
 
   - name: intel-device-plugins-gpu
     repo: https://intel.github.io/helm-charts
