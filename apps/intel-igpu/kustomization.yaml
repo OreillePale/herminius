@@ -14,3 +14,8 @@ helmCharts:
     valuesInline:
       sharedDevNum: 4
       nodeFeatureRule: false
+      tolerations:
+        - key: "dedicated"
+          operator: "Equal"
+          value: "reserved"
+          effect: "NoSchedule"
