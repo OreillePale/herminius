@@ -5,6 +5,9 @@ controllers:
         image:
           repository: oreillepale/tds-leaderboard
           tag: "2.0.0"
+        envFrom:
+          - secretRef:
+              name: bot-secret
           
 persistence:
   bot-config:
