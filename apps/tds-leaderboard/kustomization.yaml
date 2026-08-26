@@ -1,0 +1,10 @@
+resources:
+  #- external-secret.yaml
+
+helmCharts:
+  - name: app-template
+    version: 5.0.1
+    repo: https://bjw-s-labs.github.io/helm-charts
+    namespace: tds-leaderboard
+    releaseName: tds-leaderboard
+    valuesFile: bot-values.yaml
