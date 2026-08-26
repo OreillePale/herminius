@@ -22,6 +22,7 @@ spec:
           - app: influxdb
           - app: nativecloudpg
           - app: intel-igpu
+          - app: tds-leaderboard
 
   template:
     metadata:
