@@ -22,8 +22,10 @@ persistence:
 service:
   app:
     controller: beszel-server
+    type: nodePort
     ports:
       http:
         port: 8090
         targetPort: 8090
+        nodePort: 38090
 
