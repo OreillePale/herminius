@@ -11,7 +11,7 @@ spec:
           - app: redis
           - app: nfs-csi
           - app: beszel
-          - app: grimmory
+          #- app: grimmory
           - app: gotify
           - app: pangolin
           - app: immich
