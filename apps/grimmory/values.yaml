@@ -100,7 +100,7 @@ persistence:
     enabled: true
     type: persistentVolumeClaim
     accessMode: ReadWriteMany
-    storageClass: nfs-subdir
+    storageClass: truenas-root-backup
     size: 10Gi
     advancedMounts:
       grimmory:
@@ -113,7 +113,7 @@ persistence:
     enabled: true
     type: persistentVolumeClaim
     accessMode: ReadWriteMany
-    storageClass: nfs-subdir
+    storageClass: truenas-root-backup
     size: 2Gi
     advancedMounts:
       grimmory:
