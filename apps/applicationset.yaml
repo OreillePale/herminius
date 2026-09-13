@@ -17,7 +17,7 @@ spec:
           - app: immich
           - app: argocd
           - app: arrstack
-          - app: auth
+          #- app: auth
           - app: bitwarden
           - app: influxdb
           - app: nativecloudpg
