@@ -15,5 +15,3 @@ persistence:
     accessMode: ReadWriteOnce
     storageClass: local-path
     size: 2Gi
-    globalMounts:
-      - path: /app/app-data
