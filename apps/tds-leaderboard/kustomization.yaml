@@ -4,7 +4,6 @@ resources:
 helmCharts:
   - name: app-template
     version: 5.1.0
-    repo: https://bjw-s-labs.github.io/helm-charts
+    repo: oci://ghcr.io/bjw-s-labs/helm
     namespace: tds-leaderboard
-    releaseName: tds-leaderboard
     valuesFile: bot-values.yaml
