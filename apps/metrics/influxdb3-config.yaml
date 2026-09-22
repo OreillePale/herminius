@@ -1,0 +1,71 @@
+objectStorage:
+  # Object store type: s3, azure, google, file, memory, memory-throttled
+  # Default: s3 (recommended for production)
+  type: file
+
+  # Bucket/container name for storing data
+  bucket: "influxdb3-core-data"
+  
+  file:
+    dataDir: "/var/lib/influxdb3"
+    persistence:
+      storageClass: "local-host"
+      size: 20Gi
+      accessMode: ReadWriteOnce
+
+  # In-memory storage (no persistence)
+  # memory:
+
+  # In-memory storage (no persistence) but with latency and throughput that somewhat resembles a cloud object store
+  # memory-throttled:
+
+# HTTP server configuration
+http:
+  bind: "0.0.0.0:8181"
+
+# Container resource requests and limits.
+resources:
+  requests:
+    cpu: "500m"
+    memory: 500Mi
+  limits:
+    cpu: "1"
+    memory: 2Gi
+
+# Security context
+# InfluxDB3 runs as uid=1500(influxdb3) gid=1500(influxdb3)
+podSecurityContext:
+  fsGroup: 1500              # Ensures volumes are owned by influxdb3 group
+  runAsNonRoot: true         # Security best practice
+  runAsUser: 1500            # Run as influxdb3 user
+  runAsGroup: 1500           # Run as influxdb3 group
+
+# Container-level security context (optional override)
+securityContext: {}
+
+# Extra environment variables for the pod
+# These are rendered after chart-managed variables and can override them by name.
+# INFLUXDB3_UNSET_VARS is processed by the image entrypoint and accepts a
+# comma-separated list of image-provided environment variables to unset.
+extraEnv: []
+  # - name: INFLUXDB3_UNSET_VARS
+  #   value: "INFLUXDB3_PLUGIN_DIR"
+
+# Extra volumes for the pod
+extraVolumes: []
+  # - name: custom-config
+  #   configMap:
+  #     name: custom-config
+
+
+# Additional pod annotations and labels
+podAnnotations: {}
+podLabels: {}
+
+service:
+  type: ClusterIP
+  # HTTP APIs and Arrow Flight use the same listener.
+  port: 8181
+  annotations: {}
+
+
