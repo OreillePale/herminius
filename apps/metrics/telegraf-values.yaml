@@ -24,6 +24,11 @@ env:
     valueFrom:
       fieldRef:
         fieldPath: spec.nodeName
+  - name: TELEGRAF_TOKEN
+    valueFrom:
+      secretKeyRef:
+        name: metrics-secret
+        key: TELEGRAF_TOKEN
 
 
 ## Configure resource requests and limits
@@ -89,7 +94,7 @@ serviceAccount:
 ## ref: https://docs.influxdata.com/telegraf/v1.1/administration/configuration/
 config:
   agent:
-    interval: "60s"
+    interval: "10s"
     round_interval: true
     metric_batch_size: 1000
     metric_buffer_limit: 10000
@@ -112,10 +117,12 @@ config:
             problem: 2
             critical: 3
   outputs:
-    - influxdb:
+    - influxdb_v2:
         urls:
           - "http://influxdb2.metrics.svc:8181"
-        database: "telegraf"
+        bucket: "telegraf"
+        token: "$TELEGRAM_TOKEN"
+        organization: "0f5dbb1d9366f62b"
   inputs:
     - statsd:
         service_address: ":8125"
