@@ -127,8 +127,8 @@ config:
     - cpu:
     - mem:
     - disk:
-      mount_points:
-        - "/"
+        mount_points:
+          - "/"
     - diskio:
     - processes:
     - system:
