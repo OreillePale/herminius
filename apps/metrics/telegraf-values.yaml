@@ -121,7 +121,7 @@ config:
         urls:
           - "http://influxdb2.metrics.svc:8181"
         bucket: "telegraf"
-        token: "$TELEGRAM_TOKEN"
+        token: "$TELEGRAF_TOKEN"
         organization: "0f5dbb1d9366f62b"
   inputs:
     - statsd:
