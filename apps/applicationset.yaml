@@ -19,7 +19,7 @@ spec:
           - app: arrstack
           #- app: auth
           - app: bitwarden
-          - app: influxdb
+          #- app: influxdb
           - app: nativecloudpg
           - app: intel-igpu
           - app: tds-leaderboard
