@@ -2,17 +2,10 @@ resources:
   - external-secret.yaml
 
 helmCharts:
-  # - name: influxdb3-core
-  #   repo: https://helm.influxdata.com/
-  #   version: "0.1.1"
-  #   releaseName: influxdb3-core
-  #   namespace: metrics
-  #   valuesFile: influxdb3-values.yaml
-
-  - name: telegraf
+  - name: telegraf-ds
     repo: https://helm.influxdata.com/
-    version: "1.8.76"
-    releaseName: telegraf
+    version: "1.1.56"
+    releaseName: telegraf-ds
     namespace: metrics
     valuesFile: telegraf-values.yaml
 
