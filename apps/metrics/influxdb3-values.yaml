@@ -9,7 +9,7 @@ objectStorage:
   file:
     dataDir: "/var/lib/influxdb3"
     persistence:
-      storageClass: "local-host"
+      storageClass: "local-path"
       size: 20Gi
       accessMode: ReadWriteOnce
 
