@@ -27,7 +27,6 @@ initContainers: []
 env:
   - name: HOSTNAME
     value: "telegraf-polling-service"
-    env:
   - name: NODENAME
     valueFrom:
       fieldRef:
