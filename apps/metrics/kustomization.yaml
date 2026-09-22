@@ -12,3 +12,11 @@ helmCharts:
     releaseName: telegraf
     namespace: metrics
     valuesFile: telegraf-values.yaml
+
+  helmCharts:
+  - name: influxdb2
+    repo: https://helm.influxdata.com/
+    version: "2.1.2"
+    releaseName: influxdb2
+    namespace: influxdb
+    valuesFile: influxdb3-values.yaml
