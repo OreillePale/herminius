@@ -13,7 +13,6 @@ helmCharts:
     namespace: metrics
     valuesFile: telegraf-values.yaml
 
-  helmCharts:
   - name: influxdb2
     repo: https://helm.influxdata.com/
     version: "2.1.2"
