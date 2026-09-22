@@ -23,6 +23,7 @@ spec:
           - app: nativecloudpg
           - app: intel-igpu
           - app: tds-leaderboard
+          - app: monitoring
 
   template:
     metadata:
