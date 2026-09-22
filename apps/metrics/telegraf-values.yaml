@@ -124,6 +124,14 @@ config:
         token: "$TELEGRAF_TOKEN"
         organization: "0f5dbb1d9366f62b"
   inputs:
+    - cpu:
+    - mem:
+    - disk:
+      mount_points:
+        - "/"
+    - diskio:
+    - processes:
+    - system:
     - statsd:
         service_address: ":8125"
         percentiles:
