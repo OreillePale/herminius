@@ -114,7 +114,7 @@ config:
   outputs:
     - influxdb:
         urls:
-          - "http://influxdb2.metrics.svc:8086"
+          - "http://influxdb2.metrics.svc:8181"
         database: "telegraf"
   inputs:
     - statsd:
