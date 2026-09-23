@@ -124,6 +124,7 @@ config:
         token: "$TELEGRAF_TOKEN"
         organization: "flickers"
   inputs:
+    - temp:
     - cpu:
     - mem:
     - disk:
