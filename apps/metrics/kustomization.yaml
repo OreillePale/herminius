@@ -21,5 +21,5 @@ helmCharts:
     version: "13.2.5"
     releaseName: grafana
     namespace: metrics
-    valuesFiles: grafana-values.yaml
+    valuesFile: grafana-values.yaml
     
