@@ -3,3 +3,6 @@ persistence:
   enabled: true
   storageClassName: local-path
   size: 4Gi
+
+env:
+  GF_SERVER_ROOT_URL: https://grafana.flickers.cc/
