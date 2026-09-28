@@ -4,7 +4,7 @@ controllers:
       app:
         image:
           repository: voidauth/voidauth
-          tag: "1.15.2"
+          tag: "1.16.0"
         env:
           DB_HOST: cluster0-rw.nativecloudpg.svc.cluster.local
           DB_USER: voidauth
