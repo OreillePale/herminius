@@ -28,3 +28,10 @@ helmCharts:
     namespace: arrstack
     releaseName: navidrome
     valuesFile: navidrome-values.yaml
+
+  - name: app-template
+    version: 5.1.0
+    repo: https://bjw-s-labs.github.io/helm-charts
+    namespace: arrstack
+    releaseName: slskd
+    valuesFile: slskd-values.yaml
