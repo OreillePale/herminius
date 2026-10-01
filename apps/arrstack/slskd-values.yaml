@@ -1,0 +1,30 @@
+controllers:
+  slskd:
+    containers:
+      app:
+        image:
+          repository: slskd/slskd
+          tag: "0.26.0"
+        env:
+          SLSKD_REMOTE_CONFIGURATION: "true"
+          
+persistence:
+  config:
+    accessMode: ReadWriteOnce
+    storageClass: local-path
+    size: 500Mi
+    advancedMounts:
+      slskd:
+        app:
+          - path: /app
+
+service:
+  app:
+    controller: slskd
+    ports:
+      http:
+        port: 5030
+      https:
+        port: 5031
+      incoming:
+        port: 50300
