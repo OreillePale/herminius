@@ -1,5 +1,35 @@
 controllers:
   soularr:
+    initContainers:
+      config:
+        image:
+          repository: alpine
+          tag: "3.22"
+
+        env:
+          - name: LIDARR_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: slskd-secret
+                key: LIDARR_API_KEY
+
+          - name: SLSKD_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: slskd-secret
+                key: SLSKD_API_KEY
+
+        command:
+          - /bin/sh
+          - -c
+          - |
+            echo "installing crudini"
+            apk add --no-cache crudini
+
+            echo "updating .ini keys"
+            crudini --set --existing /data/config.ini Lidarr api_key "$LIDARR_API_KEY"
+            crudini --set --existing /data/config.ini Slskd api_key "$SLSKD_API_KEY"
+            
     containers:
       app:
         image:
@@ -13,6 +43,8 @@ controllers:
         envFrom:
           - secretRef:
               name: slskd-secret
+
+      
           
 persistence:
   data:
