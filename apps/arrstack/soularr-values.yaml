@@ -1,0 +1,45 @@
+controllers:
+  soularr:
+    containers:
+      app:
+        image:
+          repository: mrusse08/soularr
+          tag: "1.2.2"
+        env:
+          SCRIPT_INTERVAL: 300
+          TZ: "ETC/UTC"
+          PGID: 1000
+          PUID: 1000
+        envFrom:
+          - secretRef:
+              name: slskd-secret
+          
+persistence:
+  data:
+    accessMode: ReadWriteOnce
+    storageClass: local-path
+    size: 500Mi
+    advancedMounts:
+      soularr:
+        data:
+          - path: /data
+
+  media:
+    type: persistentVolumeClaim
+    existingClaim: media2
+    advancedMounts:
+      soularr:
+        app:
+          - path: /downloads
+            subPath: download/slskd
+
+# service:
+#   app:
+#     controller: soularr
+#     ports:
+#       http:
+#         port: 5030
+#       https:
+#         port: 5031
+#       incoming:
+#         port: 50300
