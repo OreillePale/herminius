@@ -24,12 +24,21 @@ controllers:
           - -c
           - |
             set -e
+
+            if [ ! -f /data/config.ini ]; then
+              echo "/data/config.ini not found, downloading default config"
+              python -c "import urllib.request as u; u.urlretrieve('https://raw.githubusercontent.com/mrusse/soularr/main/config.ini', '/data/config.ini.tmp')"
+              mv /data/config.ini.tmp /data/config.ini
+            fi
+
             echo "installing crudini"
             pip install --no-cache-dir --root-user-action=ignore crudini
 
             echo "updating .ini keys"
             crudini --set --existing /data/config.ini Lidarr api_key "$LIDARR_API_KEY"
             crudini --set --existing /data/config.ini Slskd api_key "$SLSKD_API_KEY"
+
+            ls -l /data
 
     containers:
       app:
@@ -39,8 +48,6 @@ controllers:
         env:
           SCRIPT_INTERVAL: 300
           TZ: "ETC/UTC"
-          PGID: 1000
-          PUID: 1000
         envFrom:
           - secretRef:
               name: slskd-secret
