@@ -7,10 +7,11 @@ controllers:
           tag: "0.26.0"
         env:
           SLSKD_REMOTE_CONFIGURATION: "true"
+          SLSKD_DOWNLOADS_DIR: /downloads
         envFrom:
           - secretRef:
               name: slskd-secret
-          
+
 persistence:
   config:
     accessMode: ReadWriteOnce
@@ -20,6 +21,15 @@ persistence:
       slskd:
         app:
           - path: /app
+
+  media:
+    type: persistentVolumeClaim
+    existingClaim: media2
+    advancedMounts:
+      slskd:
+        app:
+          - path: /downloads
+            subPath: download/slskd
 
 service:
   app:
