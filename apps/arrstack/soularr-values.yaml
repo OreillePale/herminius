@@ -44,7 +44,7 @@ controllers:
       app:
         image:
           repository: mrusse08/soularr
-          tag: "1.2.2"
+          tag: v1.2.2
         env:
           SCRIPT_INTERVAL: 300
           TZ: "ETC/UTC"
