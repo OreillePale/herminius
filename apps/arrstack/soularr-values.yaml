@@ -36,7 +36,11 @@ controllers:
 
             echo "updating .ini keys"
             crudini --set --existing /data/config.ini Lidarr api_key "$LIDARR_API_KEY"
+            crudini --set --existing /data/config.ini Lidarr host_url "http://lidarr.arrstack.svc.cluster.local:8686"
+            crudini --set --existing /data/config.ini Lidarr download_dir "/media/download/slskd"
             crudini --set --existing /data/config.ini Slskd api_key "$SLSKD_API_KEY"
+            crudini --set --existing /data/config.ini Slskd host_url "http://slskd.arrstack.svc.cluster.local:5030"
+            crudini --set --existing /data/config.ini Slskd download_dir "/downloads"
 
             ls -l /data
 
