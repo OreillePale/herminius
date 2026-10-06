@@ -144,7 +144,6 @@ config:
       url: "https://127.0.0.1:10250"
       bearer_token: "/var/run/secrets/kubernetes.io/serviceaccount/token"
       tls_ca: "/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"
-      insecure_skip_verify: true
       response_timeout: "10s"
 metrics:
   health:
