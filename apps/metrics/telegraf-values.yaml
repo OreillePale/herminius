@@ -140,11 +140,11 @@ config:
         metric_separator: "_"
         allowed_pending_messages: 10000
         percentile_limit: 1000
-    - kubernetes:
-      url: "https://127.0.0.1:10250"
-      bearer_token: "/var/run/secrets/kubernetes.io/serviceaccount/token"
-      tls_ca: "/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"
-      response_timeout: "10s"
+    #- kubernetes:
+    #  url: "https://127.0.0.1:10250"
+    #  bearer_token: "/var/run/secrets/kubernetes.io/serviceaccount/token"
+    #  tls_ca: "/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"
+    #  response_timeout: "10s"
 metrics:
   health:
     enabled: false
