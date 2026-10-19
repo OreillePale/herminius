@@ -1,0 +1,16 @@
+controllers:
+  pocketbase:
+    containers:
+      app:
+        image:
+          repository: adrianmusante/pocketbase
+          tag: "0.40.0"
+        env:
+          POCKETBASE_ADMIN_UPSERT: false
+              
+service:
+  app:
+    controller: pocketbase
+    ports:
+      http:
+        port: 8090
