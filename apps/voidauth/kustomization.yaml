@@ -8,3 +8,10 @@ helmCharts:
     namespace: voidauth
     releaseName: voidauth
     valuesFile: values.yaml
+    
+  - name: app-template
+    version: 5.1.0
+    repo: https://bjw-s-labs.github.io/helm-charts
+    namespace: voidauth
+    releaseName: pocketbase
+    valuesFile: pocketbase.yaml
