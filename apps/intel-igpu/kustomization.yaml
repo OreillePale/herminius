@@ -11,6 +11,10 @@ helmCharts:
           operator: "Equal"
           value: "reserved"
           effect: "NoSchedule"
+        - key: "gpu"
+          operator: "Equal"
+          value: "intel"
+          effect: "NoSchedule"
 
   - name: intel-device-plugins-gpu
     repo: https://intel.github.io/helm-charts
