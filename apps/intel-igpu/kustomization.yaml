@@ -1,7 +1,7 @@
 helmCharts:
   - name: intel-device-plugins-operator
     repo: https://intel.github.io/helm-charts
-    version: 0.35.0
+    version: 0.37.1
     releaseName: device-plugin-operator
     namespace: intel-igpu
     includeCRDs: true
@@ -10,10 +10,6 @@ helmCharts:
         - key: "dedicated"
           operator: "Equal"
           value: "reserved"
-          effect: "NoSchedule"
-        - key: "gpu"
-          operator: "Equal"
-          value: "intel"
           effect: "NoSchedule"
 
   - name: intel-device-plugins-gpu
@@ -28,8 +24,4 @@ helmCharts:
         - key: "dedicated"
           operator: "Equal"
           value: "reserved"
-          effect: "NoSchedule"
-        - key: "gpu"
-          operator: "Equal"
-          value: "intel"
           effect: "NoSchedule"
