@@ -9,9 +9,9 @@ helmCharts:
     namespace: metrics
     valuesFile: telegraf-values.yaml 
     
-  - name: telegraf-speedtest
+  - name: telegraf
     repo: https://helm.influxdata.com/
-    releaseName: telegraf
+    releaseName: telegraf-speedtest
     version: "1.8.78"
     namespace: metrics
     valuesFile: telegraf-speedtest.yaml
