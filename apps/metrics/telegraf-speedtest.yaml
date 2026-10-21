@@ -53,7 +53,7 @@ affinity: {}
 ##   - operator: "Exists"
 
 service:
-  enabled: true
+  enabled: false
   type: ClusterIP
   annotations: {}
 
