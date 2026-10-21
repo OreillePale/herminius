@@ -4,10 +4,17 @@ resources:
 helmCharts:
   - name: telegraf-ds
     repo: https://helm.influxdata.com/
-    version: "1.1.57"
     releaseName: telegraf-ds
+    version: "1.1.57"
     namespace: metrics
-    valuesFile: telegraf-values.yaml
+    valuesFile: telegraf-values.yaml 
+    
+  - name: telegraf-speedtest
+    repo: https://helm.influxdata.com/
+    releaseName: telegraf
+    version: "1.8.78"
+    namespace: metrics
+    valuesFile: telegraf-speedtest.yaml
 
   - name: influxdb2
     repo: https://helm.influxdata.com/
