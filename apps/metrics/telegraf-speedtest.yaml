@@ -1,0 +1,94 @@
+replicaCount: 1
+image:
+  repo: "docker.io/library/telegraf"
+  tag: "1.40-alpine"
+  pullPolicy: IfNotPresent
+## Annotations to add to the Deployment object itself.
+## Use podAnnotations below to annotate the pods.
+deploymentAnnotations: {}
+podAnnotations: {}
+podLabels: {}
+imagePullSecrets: []
+## Configure args passed to Telegraf containers
+args:
+  - "--non-strict-env-handling"
+
+initContainers: []
+# envFromSecret: "telegraf-tokens"
+env:
+  - name: HOSTNAME
+    value: "telegraf-polling-service"
+  - name: NODENAME
+    valueFrom:
+      fieldRef:
+        fieldPath: spec.nodeName
+  - name: TELEGRAF_TOKEN
+    valueFrom:
+      secretKeyRef:
+        name: metrics-secret
+        key: TELEGRAF_TOKEN
+
+
+## Configure resource requests and limits
+## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+resources: {}
+# requests:
+#   memory: 128Mi
+#   cpu: 100m
+# limits:
+#   memory: 128Mi
+#   cpu: 100m
+
+## Node labels for pod assignment
+## ref: https://kubernetes.io/docs/user-guide/node-selection/
+nodeSelector: {}
+## Affinity for pod assignment
+## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+##
+affinity: {}
+## Tolerations for pod assignment
+## Ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+##
+## tolerations:
+##   - operator: "Exists"
+
+service:
+  enabled: true
+  type: ClusterIP
+  annotations: {}
+
+config:
+  agent:
+    interval: "60s"
+    round_interval: true
+    metric_batch_size: 1000
+    metric_buffer_limit: 10000
+    collection_jitter: "0s"
+    flush_interval: "60s"
+    flush_jitter: "0s"
+    precision: ""
+    debug: false
+    quiet: false
+    logfile: ""
+    hostname: "$NODENAME"
+    omit_hostname: false
+  processors:
+    - enum:
+        mapping:
+          fields: ["status"]
+          dest: "status_code"
+          value_mappings:
+            healthy: 1
+            problem: 2
+            critical: 3
+  outputs:
+    - influxdb_v2:
+        urls:
+          - "http://influxdb2.metrics.svc:8181"
+        bucket: "telegraf"
+        token: "$TELEGRAF_TOKEN"
+        organization: "flickers"
+  inputs:
+    - internet_speed:
+        interval: "1h"
+        enable_file_download: true
