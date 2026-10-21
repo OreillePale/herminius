@@ -91,4 +91,3 @@ config:
   inputs:
     - internet_speed:
         interval: "1h"
-        enable_file_download: true
