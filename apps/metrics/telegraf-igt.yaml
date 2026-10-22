@@ -17,7 +17,7 @@ controllers:
       main:
         image:
           repository: oreillepale/telegraf-intel-gpu-top
-          tag: 0.1.1
+          tag: 0.1.2
           pullPolicy: IfNotPresent
         args: ["--config", "/etc/telegraf/telegraf.conf"]
         env:
