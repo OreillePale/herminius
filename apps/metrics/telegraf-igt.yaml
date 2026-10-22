@@ -23,7 +23,7 @@ controllers:
       main:
         image:
           repository: oreillepale/telegraf-intel-gpu-top
-          tag: 0.1.2
+          tag: 0.1.3
           pullPolicy: IfNotPresent
         # Bypass the image entrypoint: it drops to the "telegraf" user, and
         # intel_gpu_top needs root (or CAP_PERFMON) to read perf counters.
