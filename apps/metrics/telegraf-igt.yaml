@@ -17,9 +17,14 @@ controllers:
       main:
         image:
           repository: oreillepale/telegraf-intel-gpu-top
-          tag: 0.1.0
+          tag: 0.1.1
           pullPolicy: IfNotPresent
         args: ["--config", "/etc/telegraf/telegraf.conf"]
+        env:
+          NODENAME:
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
         envFrom:
           - secretRef:
               name: metrics-secret
