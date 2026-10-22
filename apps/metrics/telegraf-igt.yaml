@@ -1,3 +1,9 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/app-template-4.6.0/charts/other/app-template/values.schema.json
+#
+# bjw-s app-template values for telegraf-intel-gpu-top (Intel GPU -> Telegraf)
+# igt.sh is baked into the image at /usr/local/bin/igt.sh.
+# The secret (metrics-secret) is created separately, not stored here.
+
 controllers:
   telegraf:
     type: daemonset
@@ -19,6 +25,9 @@ controllers:
           repository: oreillepale/telegraf-intel-gpu-top
           tag: 0.1.2
           pullPolicy: IfNotPresent
+        # Bypass the image entrypoint: it drops to the "telegraf" user, and
+        # intel_gpu_top needs root (or CAP_PERFMON) to read perf counters.
+        command: ["telegraf"]
         args: ["--config", "/etc/telegraf/telegraf.conf"]
         env:
           NODENAME:
@@ -36,7 +45,7 @@ controllers:
             cpu: 50m
             memory: 64Mi
           limits:
-            memory: 1Gi
+            memory: 512Mi
 
 configMaps:
   config:
@@ -45,7 +54,6 @@ configMaps:
         [agent]
           interval = "10s"
           flush_interval = "10s"
-          omit_hostname = false
           hostname = "${NODENAME}"
 
         [[inputs.exec]]
@@ -55,9 +63,10 @@ configMaps:
           name_override = "intel_gpu"
 
         [[outputs.influxdb_v2]]
-          urls = ["http://influxdb2.metrics.svc:8181"]
-          token = "${TELEGRAF_TOKEN}"
-          bucket = "telegraf"
+          urls = ["${INFLUX_URL}"]
+          token = "${INFLUX_TOKEN}"
+          organization = "${INFLUX_ORG}"
+          bucket = "${INFLUX_BUCKET}"
 
 persistence:
   config:
