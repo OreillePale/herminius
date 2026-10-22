@@ -1,0 +1,63 @@
+controllers:
+  telegraf:
+    type: daemonset
+    pod:
+      nodeSelector:
+        gpu: intel
+    containers:
+      main:
+        image:
+          repository: oreillepale/telegraf-intel-gpu-top
+          tag: 0.1.0
+          pullPolicy: IfNotPresent
+        args: ["--config", "/etc/telegraf/telegraf.conf"]
+        envFrom:
+          - secretRef:
+              name: metrics-secret
+        securityContext:
+          privileged: true
+          runAsUser: 0
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            memory: 256Mi
+
+configMaps:
+  config:
+    data:
+      telegraf.conf: |
+        [agent]
+          interval = "10s"
+          flush_interval = "10s"
+          omit_hostname = false
+          hostname = "${NODENAME}"
+
+        [[inputs.exec]]
+          commands = ["/usr/local/bin/igt.sh"]
+          timeout = "8s"
+          data_format = "json"
+          name_override = "intel_gpu"
+
+        [[outputs.influxdb_v2]]
+          urls = ["http://influxdb2.metrics.svc:8181"]
+          token = "${TELEGRAF_TOKEN}"
+          bucket = "telegraf"
+
+persistence:
+  config:
+    type: configMap
+    identifier: config
+    advancedMounts:
+      telegraf:
+        main:
+          - path: /etc/telegraf/telegraf.conf
+            subPath: telegraf.conf
+  dri:
+    type: hostPath
+    hostPath: /dev/dri
+    advancedMounts:
+      telegraf:
+        main:
+          - path: /dev/dri
