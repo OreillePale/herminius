@@ -46,7 +46,6 @@ controllers:
             memory: 64Mi
           limits:
             memory: 512Mi
-
 configMaps:
   config:
     data:
@@ -63,10 +62,9 @@ configMaps:
           name_override = "intel_gpu"
 
         [[outputs.influxdb_v2]]
-          urls = ["${INFLUX_URL}"]
-          token = "${INFLUX_TOKEN}"
-          organization = "${INFLUX_ORG}"
-          bucket = "${INFLUX_BUCKET}"
+          urls = ["http://influxdb2.metrics.svc:8181"]
+          token = "${TELEGRAF_TOKEN}"
+          bucket = "telegraf"
 
 persistence:
   config:
