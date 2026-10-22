@@ -23,7 +23,7 @@ controllers:
       main:
         image:
           repository: oreillepale/telegraf-intel-gpu-top
-          tag: 0.1.3
+          tag: 0.1.4
           pullPolicy: IfNotPresent
         # Bypass the image entrypoint: it drops to the "telegraf" user, and
         # intel_gpu_top needs root (or CAP_PERFMON) to read perf counters.
@@ -51,8 +51,8 @@ configMaps:
     data:
       telegraf.conf: |
         [agent]
-          interval = "10s"
-          flush_interval = "10s"
+          interval = "60s"
+          flush_interval = "60s"
           hostname = "${NODENAME}"
 
         [[inputs.exec]]
