@@ -65,6 +65,7 @@ configMaps:
           urls = ["http://influxdb2.metrics.svc:8181"]
           token = "${TELEGRAF_TOKEN}"
           bucket = "telegraf"
+          organization = "flickers"
 
 persistence:
   config:
