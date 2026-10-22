@@ -16,6 +16,13 @@ helmCharts:
     namespace: metrics
     valuesFile: telegraf-speedtest.yaml
 
+  - name: app-template
+    version: 5.3.0
+    repo: https://bjw-s-labs.github.io/helm-charts
+    namespace: metrics
+    releaseName: telegraf-intel-gpu-top
+    valuesFile: telegraf-igt.yaml
+
   - name: influxdb2
     repo: https://helm.influxdata.com/
     version: "2.1.2"
