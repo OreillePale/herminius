@@ -4,6 +4,15 @@ controllers:
     pod:
       nodeSelector:
         gpu: intel
+      tolerations:
+        - key: gpu
+          operator: Equal
+          value: intel
+          effect: NoSchedule
+        - key: dedicated
+          operator: Equal
+          value: reserved
+          effect: NoSchedule
     containers:
       main:
         image:
