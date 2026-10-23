@@ -66,6 +66,7 @@ configMaps:
           token = "${TELEGRAF_TOKEN}"
           bucket = "telegraf"
           organization = "flickers"
+          fieldinclude = ["frequency_*", "rc6_value", "engines_*_busy"]
 
 persistence:
   config:
