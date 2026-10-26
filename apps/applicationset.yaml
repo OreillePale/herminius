@@ -24,7 +24,7 @@ spec:
           - app: intel-igpu
           - app: tds-leaderboard
           - app: metrics
-          - app: adventea
+          #- app: adventea
 
   template:
     metadata:
