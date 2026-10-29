@@ -1,2 +1,4 @@
 resources:
   - argocd-cm.yaml
+  - https://raw.githubusercontent.com/argoproj-labs/argocd-image-updater/stable/config/install.yaml
+
