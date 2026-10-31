@@ -32,7 +32,7 @@ helmCharts:
 
   - name: grafana
     repo: https://grafana-community.github.io/helm-charts
-    version: "14.0.1"
+    version: "14.3.0"
     releaseName: grafana
     namespace: metrics
     valuesFile: grafana-values.yaml
