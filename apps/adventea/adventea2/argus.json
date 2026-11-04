@@ -1,0 +1,7 @@
+[
+    {
+        file: "values.yaml",
+        repoPath: "controllers.bot.containers.app.image.repository",
+        tagPath: "controllers.bot.containers.app.image.tag"
+    }
+]
