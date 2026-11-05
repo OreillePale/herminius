@@ -1,0 +1,10 @@
+controllers:
+  bot:
+    containers:
+      app:
+        image:
+          repository: seggen/adventea
+          tag: "1.0.7"
+        envFrom:
+          - secretRef:
+              name: adventea-secret
