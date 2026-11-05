@@ -4,7 +4,7 @@ controllers:
       app:
         image:
           repository: seggen/adventea
-          tag: "1.0.7"
+          tag: "1.0.8"
         envFrom:
           - secretRef:
               name: adventea-secret
