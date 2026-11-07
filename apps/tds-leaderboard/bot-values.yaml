@@ -4,7 +4,7 @@ controllers:
       app:
         image:
           repository: oreillepale/tds-leaderboard
-          tag: "3.2.1"
+          tag: "3.3.0"
         envFrom:
           - secretRef:
               name: bot-secret
