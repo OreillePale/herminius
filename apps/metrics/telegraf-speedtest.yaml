@@ -1,60 +1,45 @@
 replicaCount: 1
+
 image:
   repo: "docker.io/library/telegraf"
   tag: "1.40-alpine"
   pullPolicy: IfNotPresent
-## Annotations to add to the Deployment object itself.
-## Use podAnnotations below to annotate the pods.
+
 deploymentAnnotations: {}
 podAnnotations: {}
 podLabels: {}
 imagePullSecrets: []
-## Configure args passed to Telegraf containers
+
 args:
   - "--non-strict-env-handling"
 
 initContainers: []
-# envFromSecret: "telegraf-tokens"
+
 env:
   - name: HOSTNAME
     value: "telegraf-polling-service"
+
   - name: NODENAME
     valueFrom:
       fieldRef:
         fieldPath: spec.nodeName
+
   - name: TELEGRAF_TOKEN
     valueFrom:
       secretKeyRef:
         name: metrics-secret
         key: TELEGRAF_TOKEN
 
-
-## Configure resource requests and limits
-## ref: http://kubernetes.io/docs/user-guide/compute-resources/
 resources: {}
-# requests:
-#   memory: 128Mi
-#   cpu: 100m
-# limits:
-#   memory: 128Mi
-#   cpu: 100m
 
-## Node labels for pod assignment
-## ref: https://kubernetes.io/docs/user-guide/node-selection/
 nodeSelector: {}
-## Affinity for pod assignment
-## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
-##
 affinity: {}
-## Tolerations for pod assignment
-## Ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
-##
-## tolerations:
-##   - operator: "Exists"
+tolerations: []
 
+# Expose Telegraf through a Kubernetes NodePort Service
 service:
-  enabled: false
-  type: ClusterIP
+  enabled: true
+  type: NodePort
   annotations: {}
 
 config:
@@ -72,6 +57,7 @@ config:
     logfile: ""
     hostname: "$NODENAME"
     omit_hostname: false
+
   processors:
     - enum:
         mapping:
@@ -81,6 +67,7 @@ config:
             healthy: 1
             problem: 2
             critical: 3
+
   outputs:
     - influxdb_v2:
         urls:
@@ -88,6 +75,15 @@ config:
         bucket: "telegraf"
         token: "$TELEGRAF_TOKEN"
         organization: "flickers"
+
   inputs:
+    # Existing internet speed monitoring
     - internet_speed:
         interval: "1h"
+
+    # TrueNAS Graphite metrics receiver
+    - socket_listener:
+        service_address: "tcp://:2003"
+        data_format: "graphite"
+        templates:
+          - "measurement*"
