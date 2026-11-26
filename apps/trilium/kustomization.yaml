@@ -1,0 +1,9 @@
+#resources:
+#  - stores
+helmCharts:
+  - name: trilium
+    version: 2.0.0
+    repo: https://triliumnext.github.io/helm-charts
+    namespace: trilium
+    releaseName: trilium
+    valuesFile: values.yaml
