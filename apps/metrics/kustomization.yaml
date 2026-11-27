@@ -12,7 +12,7 @@ helmCharts:
   - name: telegraf
     repo: https://helm.influxdata.com/
     releaseName: telegraf-speedtest
-    version: "1.8.78"
+    version: "1.8.79"
     namespace: metrics
     valuesFile: telegraf-speedtest.yaml
 
