@@ -5,7 +5,7 @@ helmCharts:
   - name: telegraf-ds
     repo: https://helm.influxdata.com/
     releaseName: telegraf-ds
-    version: "1.1.57"
+    version: "1.1.58"
     namespace: metrics
     valuesFile: telegraf-values.yaml 
     
